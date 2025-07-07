@@ -2,7 +2,7 @@
 
 ### Info
 
-이 프로젝트는 https://developer.atlassian.com/cloud/confluence/rest/v2/intro/#about 의 openapi 파일로 생성되었습니다.
+This project was generated from the OpenAPI file at https://developer.atlassian.com/cloud/confluence/rest/v2/intro/#about.
 
 ### Building
 
