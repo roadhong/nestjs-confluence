@@ -1,0 +1,12 @@
+# npm publish 제외 파일
+README.md
+.gitignore
+.git/
+node_modules/
+src/
+v2_openapi.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+package-lock.json
+.DS_Store
+tsconfig.json

@@ -1,5 +1,5 @@
 {
-  "name": "@nsetsjs/confluence",
+  "name": "nestjs-confluence",
   "version": "1.0.0",
   "description": "Nestjs Confluence api v2 module",
   "scripts": {

@@ -2,7 +2,7 @@
 
 ### Info
 
-This project was generated from the OpenAPI file at https://developer.atlassian.com/cloud/confluence/rest/v2/intro/#about.
+This project was generated from the OpenAPI file at https://developer.atlassian.com/cloud/confluence/rest/v2/intro/#about
 
 ### Building
 
@@ -159,3 +159,38 @@ import { environment } from "../environments/environment";
 export class AppModule {}
 ```
 
+
+
+# Service
+
+| Service Name                | Description (API Reference)                                                                 |
+|-----------------------------|--------------------------------------------------------------------------------------------|
+| **AdminKeyService**         | [Admin Key API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-admin-key/) |
+| **AncestorsService**        | [Ancestors API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-ancestors/) |
+| **AttachmentService**       | [Attachment API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-attachment/) |
+| **BlogPostService**         | [Blog Post API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-blog-post/) |
+| **ChildrenService**         | [Children API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-children/) |
+| **ClassificationLevelService** | [Classification Level API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-classification-level/) |
+| **CommentService**          | [Comment API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-comment/) |
+| **ContentService**          | [Content API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-content/) |
+| **ContentPropertiesService**| [Content Properties API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-content-properties/) |
+| **CustomContentService**    | [Custom Content API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-custom-content/) |
+| **DataPoliciesService**     | [Data Policies API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-data-policies/) |
+| **DatabaseService**         | [Database API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-database/) |
+| **DescendantsService**      | [Descendants API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-descendants/) |
+| **EAPService**              | [EAP API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-eap/) |
+| **FolderService**           | [Folder API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-folder/) |
+| **LabelService**            | [Label API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-label/) |
+| **LikeService**             | [Like API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-like/) |
+| **OperationService**        | [Operation API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-operation/) |
+| **PageService**             | [Page API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-page/) |
+| **RedactionsService**       | [Redactions API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-redactions/) |
+| **SmartLinkService**        | [Smart Link API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-smart-link/) |
+| **SpaceService**            | [Space API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-space/) |
+| **SpacePermissionsService** | [Space Permissions API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-space-permissions/) |
+| **SpacePropertiesService**  | [Space Properties API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-space-properties/) |
+| **SpaceRolesService**       | [Space Roles API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-space-roles/) |
+| **TaskService**             | [Task API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-task/) |
+| **UserService**             | [User API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-user/) |
+| **VersionService**          | [Version API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-version/) |
+| **WhiteboardService**       | [Whiteboard API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-whiteboard/) |
