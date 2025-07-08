@@ -1,6 +1,6 @@
 {
   "name": "nestjs-confluence",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Nestjs Confluence api v2 module",
   "scripts": {
     "build": "tsc",
@@ -10,7 +10,7 @@
     "rimraf": "^6.0.1",
     "typescript": "5.8.3"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@nestjs/axios": "^4.0.0",
     "@nestjs/common": "^11.0.0",
     "@nestjs/core": "^11.0.0",
@@ -23,5 +23,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/roadhong/nestjs-confluence.git"
-  }
+  },
+  "keywords": [
+    "nestjs",
+    "confluence",
+    "api",
+    "atlassian",
+    "module",
+    "typescript",
+    "documentation"
+  ]
 }
