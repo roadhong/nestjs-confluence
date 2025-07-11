@@ -1,4 +1,4 @@
-## @nestjs/confluence
+## nestjs-confluence
 
 ### Info
 
@@ -19,7 +19,7 @@ In your Nestjs project:
 
 ```typescript
 // without configuring providers
-import { ConfluenceApiModule } from "@nestjs/confluence";
+import { ConfluenceApiModule } from "nestjs-confluence";
 import { HttpModule } from "@nestjs/axios";
 
 @Module({
@@ -67,8 +67,8 @@ you can create an alias name when importing the modules
 in order to avoid naming conflicts:
 
 ```typescript
-import { ConfluenceApiModule } from "@nestjs/confluence";
-import { ConfluenceApiModule as OtherConfluenceApiModule } from "@nestjs/confluence";
+import { ConfluenceApiModule } from "nestjs-confluence";
+import { ConfluenceApiModule as OtherConfluenceApiModule } from "nestjs-confluence";
 import { HttpModule } from "@nestjs/axios";
 
 @Module({

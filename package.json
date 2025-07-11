@@ -1,6 +1,6 @@
 {
   "name": "nestjs-confluence",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Nestjs Confluence api v2 module",
   "scripts": {
     "build": "tsc",
