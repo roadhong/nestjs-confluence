@@ -15,11 +15,17 @@ import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
+import { CreateSpaceRoleRequest } from '../model/createSpaceRoleRequest';
+import { DeleteSpaceRoleResponse } from '../model/deleteSpaceRoleResponse';
+import { GetSpaceRoleMode200Response } from '../model/getSpaceRoleMode200Response';
 import { GetSpaceRolesById200Response } from '../model/getSpaceRolesById200Response';
 import { MultiEntityResultSpaceRole } from '../model/multiEntityResultSpaceRole';
 import { MultiEntityResultSpaceRoleAssignment } from '../model/multiEntityResultSpaceRoleAssignment';
 import { PrincipalType } from '../model/principalType';
-import { SetSpaceRoleAssignmentsRequest } from '../model/setSpaceRoleAssignmentsRequest';
+import { SetSpaceRoleAssignmentsRequestInner } from '../model/setSpaceRoleAssignmentsRequestInner';
+import { SpaceRole } from '../model/spaceRole';
+import { UpdateSpaceRoleRequest } from '../model/updateSpaceRoleRequest';
+import { UpdateSpaceRoleResponse } from '../model/updateSpaceRoleResponse';
 import { Configuration } from '../configuration';
 import { COLLECTION_FORMATS } from '../variables';
 
@@ -48,32 +54,154 @@ export class SpaceRolesService {
     }
 
     /**
+     * Create a space role
+     * Create a space role.  Available as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550).   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: User must be an organization or site admin. Connect and Forge app users are not authorized to access this resource.
+     * @param CreateSpaceRoleRequest 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param {*} [createSpaceRoleOpts.config] Override http request option.
+     */
+    public createSpaceRole(CreateSpaceRoleRequest: CreateSpaceRoleRequest, createSpaceRoleOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SpaceRole>>;
+    public createSpaceRole(CreateSpaceRoleRequest: CreateSpaceRoleRequest, createSpaceRoleOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (CreateSpaceRoleRequest === null || CreateSpaceRoleRequest === undefined) {
+            throw new Error('Required parameter CreateSpaceRoleRequest was null or undefined when calling createSpaceRole.');
+        }
+
+        let headers = {...this.defaultHeaders};
+
+        let accessTokenObservable: Observable<any> = of(null);
+
+        // authentication (basicAuth) required
+        if (this.configuration.username || this.configuration.password) {
+            headers['Authorization'] = 'Basic ' + btoa(this.configuration.username + ':' + this.configuration.password);
+        }
+
+        // authentication (oAuthDefinitions) required
+        if (this.configuration.accessToken) {
+            accessTokenObservable = typeof this.configuration.accessToken === 'function'
+                ? from(Promise.resolve(this.configuration.accessToken()))
+                : from(Promise.resolve(this.configuration.accessToken))
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers['Accept'] = httpHeaderAcceptSelected;
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers['Content-Type'] = httpContentTypeSelected;
+        }
+        return accessTokenObservable.pipe(
+            switchMap((accessToken) => {
+                if (accessToken) {
+                    headers['Authorization'] = `Bearer ${accessToken}`;
+                }
+
+                return this.httpClient.post<SpaceRole>(`${this.basePath}/space-roles`,
+                    CreateSpaceRoleRequest,
+                    {
+                        withCredentials: this.configuration.withCredentials,
+                        ...createSpaceRoleOpts?.config,
+                        headers: {...headers, ...createSpaceRoleOpts?.config?.headers},
+                    }
+                );
+            })
+        );
+    }
+    /**
+     * Delete a space role
+     * Delete a space role  Available as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550).   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: User must be an organization or site admin. Connect and Forge app users are not authorized to access this resource.
+     * @param id Id of the space role
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param {*} [deleteSpaceRoleOpts.config] Override http request option.
+     */
+    public deleteSpaceRole(id: string, deleteSpaceRoleOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<DeleteSpaceRoleResponse>>;
+    public deleteSpaceRole(id: string, deleteSpaceRoleOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling deleteSpaceRole.');
+        }
+
+        let headers = {...this.defaultHeaders};
+
+        let accessTokenObservable: Observable<any> = of(null);
+
+        // authentication (basicAuth) required
+        if (this.configuration.username || this.configuration.password) {
+            headers['Authorization'] = 'Basic ' + btoa(this.configuration.username + ':' + this.configuration.password);
+        }
+
+        // authentication (oAuthDefinitions) required
+        if (this.configuration.accessToken) {
+            accessTokenObservable = typeof this.configuration.accessToken === 'function'
+                ? from(Promise.resolve(this.configuration.accessToken()))
+                : from(Promise.resolve(this.configuration.accessToken))
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers['Accept'] = httpHeaderAcceptSelected;
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+        return accessTokenObservable.pipe(
+            switchMap((accessToken) => {
+                if (accessToken) {
+                    headers['Authorization'] = `Bearer ${accessToken}`;
+                }
+
+                return this.httpClient.delete<DeleteSpaceRoleResponse>(`${this.basePath}/space-roles/${encodeURIComponent(String(id))}`,
+                    {
+                        withCredentials: this.configuration.withCredentials,
+                        ...deleteSpaceRoleOpts?.config,
+                        headers: {...headers, ...deleteSpaceRoleOpts?.config?.headers},
+                    }
+                );
+            })
+        );
+    }
+    /**
      * Get available space roles
-     * Retrieves the available space roles.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site; if requesting a certain space\&#39;s roles, permission to view the space.
-     * @param spaceId The space ID for which to filter available space roles; if empty, return all available space roles for the tenant.
-     * @param roleType The space role type to filter results by.
-     * @param principalId The principal ID to filter results by. If specified, a principal-type must also be specified. Paired with a &#x60;principal-type&#x60; of &#x60;ACCESS_CLASS&#x60;, valid values include [&#x60;anonymous-users&#x60;, &#x60;jsm-project-admins&#x60;, &#x60;authenticated-users&#x60;, &#x60;all-licensed-users&#x60;, &#x60;all-product-admins&#x60;]
-     * @param principalType The principal type to filter results by. If specified, a principal-id must also be specified.
+     * Retrieves the available space roles.  Available as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550).   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site; if requesting a certain space\&#39;s roles, permission to view the space.
+     * @param space_id The space ID for which to filter available space roles; if empty, return all available space roles for the tenant.
+     * @param role_type The space role type to filter results by.
+     * @param principal_id The principal ID to filter results by. If specified, a principal-type must also be specified. Paired with a &#x60;principal-type&#x60; of &#x60;ACCESS_CLASS&#x60;, valid values include [&#x60;anonymous-users&#x60;, &#x60;jsm-project-admins&#x60;, &#x60;authenticated-users&#x60;, &#x60;all-licensed-users&#x60;, &#x60;all-product-admins&#x60;]
+     * @param principal_type The principal type to filter results by. If specified, a principal-id must also be specified.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of space roles to return. If more results exist, use the &#x60;Link&#x60; response header to retrieve a relative URL that will return the next set of results.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getAvailableSpaceRolesOpts.config] Override http request option.
      */
-    public getAvailableSpaceRoles(spaceId?: string, roleType?: string, principalId?: string, principalType?: PrincipalType, cursor?: string, limit?: number, getAvailableSpaceRolesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultSpaceRole>>;
-    public getAvailableSpaceRoles(spaceId?: string, roleType?: string, principalId?: string, principalType?: PrincipalType, cursor?: string, limit?: number, getAvailableSpaceRolesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getAvailableSpaceRoles(space_id?: string, role_type?: string, principal_id?: string, principal_type?: PrincipalType, cursor?: string, limit?: number, getAvailableSpaceRolesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultSpaceRole>>;
+    public getAvailableSpaceRoles(space_id?: string, role_type?: string, principal_id?: string, principal_type?: PrincipalType, cursor?: string, limit?: number, getAvailableSpaceRolesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
-        if (spaceId !== undefined && spaceId !== null) {
-            queryParameters.append('space-id', <any>spaceId);
+        if (space_id !== undefined && space_id !== null) {
+            queryParameters.append('space-id', <any>space_id);
         }
-        if (roleType !== undefined && roleType !== null) {
-            queryParameters.append('role-type', <any>roleType);
+        if (role_type !== undefined && role_type !== null) {
+            queryParameters.append('role-type', <any>role_type);
         }
-        if (principalId !== undefined && principalId !== null) {
-            queryParameters.append('principal-id', <any>principalId);
+        if (principal_id !== undefined && principal_id !== null) {
+            queryParameters.append('principal-id', <any>principal_id);
         }
-        if (principalType !== undefined && principalType !== null) {
-            queryParameters.append('principal-type', <any>principalType);
+        if (principal_type !== undefined && principal_type !== null) {
+            queryParameters.append('principal-type', <any>principal_type);
         }
         if (cursor !== undefined && cursor !== null) {
             queryParameters.append('cursor', <any>cursor);
@@ -129,36 +257,36 @@ export class SpaceRolesService {
     }
     /**
      * Get space role assignments
-     * Retrieves the space role assignments.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the space.
+     * Retrieves the space role assignments.  Available as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550).   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the space.
      * @param id The ID of the space for which to retrieve assignments.
-     * @param roleId Filters the returned role assignments to the provided role ID.
-     * @param roleType Filters the returned role assignments to the provided role type.
-     * @param principalId Filters the returned role assignments to the provided principal id. If specified, a principal-type must also be specified. Paired with a &#x60;principal-type&#x60; of &#x60;ACCESS_CLASS&#x60;, valid values include [&#x60;anonymous-users&#x60;, &#x60;jsm-project-admins&#x60;, &#x60;authenticated-users&#x60;, &#x60;all-licensed-users&#x60;, &#x60;all-product-admins&#x60;]
-     * @param principalType Filters the returned role assignments to the provided principal type. If specified, a principal-id must also be specified.
+     * @param role_id Filters the returned role assignments to the provided role ID.
+     * @param role_type Filters the returned role assignments to the provided role type.
+     * @param principal_id Filters the returned role assignments to the provided principal id. If specified, a principal-type must also be specified. Paired with a &#x60;principal-type&#x60; of &#x60;ACCESS_CLASS&#x60;, valid values include [&#x60;anonymous-users&#x60;, &#x60;jsm-project-admins&#x60;, &#x60;authenticated-users&#x60;, &#x60;all-licensed-users&#x60;, &#x60;all-product-admins&#x60;]
+     * @param principal_type Filters the returned role assignments to the provided principal type. If specified, a principal-id must also be specified.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of space roles to return. If more results exist, use the &#x60;Link&#x60; response header to retrieve a relative URL that will return the next set of results.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getSpaceRoleAssignmentsOpts.config] Override http request option.
      */
-    public getSpaceRoleAssignments(id: number, roleId?: string, roleType?: string, principalId?: string, principalType?: PrincipalType, cursor?: string, limit?: number, getSpaceRoleAssignmentsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultSpaceRoleAssignment>>;
-    public getSpaceRoleAssignments(id: number, roleId?: string, roleType?: string, principalId?: string, principalType?: PrincipalType, cursor?: string, limit?: number, getSpaceRoleAssignmentsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getSpaceRoleAssignments(id: number, role_id?: string, role_type?: string, principal_id?: string, principal_type?: PrincipalType, cursor?: string, limit?: number, getSpaceRoleAssignmentsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultSpaceRoleAssignment>>;
+    public getSpaceRoleAssignments(id: number, role_id?: string, role_type?: string, principal_id?: string, principal_type?: PrincipalType, cursor?: string, limit?: number, getSpaceRoleAssignmentsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getSpaceRoleAssignments.');
         }
 
         let queryParameters = new URLSearchParams();
-        if (roleId !== undefined && roleId !== null) {
-            queryParameters.append('role-id', <any>roleId);
+        if (role_id !== undefined && role_id !== null) {
+            queryParameters.append('role-id', <any>role_id);
         }
-        if (roleType !== undefined && roleType !== null) {
-            queryParameters.append('role-type', <any>roleType);
+        if (role_type !== undefined && role_type !== null) {
+            queryParameters.append('role-type', <any>role_type);
         }
-        if (principalId !== undefined && principalId !== null) {
-            queryParameters.append('principal-id', <any>principalId);
+        if (principal_id !== undefined && principal_id !== null) {
+            queryParameters.append('principal-id', <any>principal_id);
         }
-        if (principalType !== undefined && principalType !== null) {
-            queryParameters.append('principal-type', <any>principalType);
+        if (principal_type !== undefined && principal_type !== null) {
+            queryParameters.append('principal-type', <any>principal_type);
         }
         if (cursor !== undefined && cursor !== null) {
             queryParameters.append('cursor', <any>cursor);
@@ -213,8 +341,61 @@ export class SpaceRolesService {
         );
     }
     /**
+     * Get space role mode
+     * Retrieves the space role mode.  Available as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550).   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site (\&#39;Can use\&#39; global permission).
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param {*} [getSpaceRoleModeOpts.config] Override http request option.
+     */
+    public getSpaceRoleMode(getSpaceRoleModeOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GetSpaceRoleMode200Response>>;
+    public getSpaceRoleMode(getSpaceRoleModeOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        let headers = {...this.defaultHeaders};
+
+        let accessTokenObservable: Observable<any> = of(null);
+
+        // authentication (basicAuth) required
+        if (this.configuration.username || this.configuration.password) {
+            headers['Authorization'] = 'Basic ' + btoa(this.configuration.username + ':' + this.configuration.password);
+        }
+
+        // authentication (oAuthDefinitions) required
+        if (this.configuration.accessToken) {
+            accessTokenObservable = typeof this.configuration.accessToken === 'function'
+                ? from(Promise.resolve(this.configuration.accessToken()))
+                : from(Promise.resolve(this.configuration.accessToken))
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers['Accept'] = httpHeaderAcceptSelected;
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+        return accessTokenObservable.pipe(
+            switchMap((accessToken) => {
+                if (accessToken) {
+                    headers['Authorization'] = `Bearer ${accessToken}`;
+                }
+
+                return this.httpClient.get<GetSpaceRoleMode200Response>(`${this.basePath}/space-role-mode`,
+                    {
+                        withCredentials: this.configuration.withCredentials,
+                        ...getSpaceRoleModeOpts?.config,
+                        headers: {...headers, ...getSpaceRoleModeOpts?.config?.headers},
+                    }
+                );
+            })
+        );
+    }
+    /**
      * Get space role by ID
-     * Retrieves the space role by ID.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site.
+     * Retrieves the space role by ID.  Available as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550).   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site.
      * @param id The ID of the space role to retrieve.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -272,21 +453,21 @@ export class SpaceRolesService {
     }
     /**
      * Set space role assignments
-     * Sets space role assignments as specified in the payload.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to manage roles in the space.
+     * Sets space role assignments as specified in the payload.  Available as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550).   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to manage roles in the space.
      * @param id The ID of the space for which to retrieve assignments.
-     * @param setSpaceRoleAssignmentsRequest 
+     * @param SetSpaceRoleAssignmentsRequestInner 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [setSpaceRoleAssignmentsOpts.config] Override http request option.
      */
-    public setSpaceRoleAssignments(id: number, setSpaceRoleAssignmentsRequest: SetSpaceRoleAssignmentsRequest, setSpaceRoleAssignmentsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultSpaceRoleAssignment>>;
-    public setSpaceRoleAssignments(id: number, setSpaceRoleAssignmentsRequest: SetSpaceRoleAssignmentsRequest, setSpaceRoleAssignmentsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public setSpaceRoleAssignments(id: number, SetSpaceRoleAssignmentsRequestInner: Array<SetSpaceRoleAssignmentsRequestInner>, setSpaceRoleAssignmentsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultSpaceRoleAssignment>>;
+    public setSpaceRoleAssignments(id: number, SetSpaceRoleAssignmentsRequestInner: Array<SetSpaceRoleAssignmentsRequestInner>, setSpaceRoleAssignmentsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling setSpaceRoleAssignments.');
         }
 
-        if (setSpaceRoleAssignmentsRequest === null || setSpaceRoleAssignmentsRequest === undefined) {
-            throw new Error('Required parameter setSpaceRoleAssignmentsRequest was null or undefined when calling setSpaceRoleAssignments.');
+        if (SetSpaceRoleAssignmentsRequestInner === null || SetSpaceRoleAssignmentsRequestInner === undefined) {
+            throw new Error('Required parameter SetSpaceRoleAssignmentsRequestInner was null or undefined when calling setSpaceRoleAssignments.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -329,11 +510,80 @@ export class SpaceRolesService {
                 }
 
                 return this.httpClient.post<MultiEntityResultSpaceRoleAssignment>(`${this.basePath}/spaces/${encodeURIComponent(String(id))}/role-assignments`,
-                    setSpaceRoleAssignmentsRequest,
+                    SetSpaceRoleAssignmentsRequestInner,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...setSpaceRoleAssignmentsOpts?.config,
                         headers: {...headers, ...setSpaceRoleAssignmentsOpts?.config?.headers},
+                    }
+                );
+            })
+        );
+    }
+    /**
+     * Update a space role
+     * Update a space role.  Available as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550).   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: User must be an organization or site admin. Connect and Forge app users are not authorized to access this resource.
+     * @param id Id of the space role
+     * @param UpdateSpaceRoleRequest 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param {*} [updateSpaceRoleOpts.config] Override http request option.
+     */
+    public updateSpaceRole(id: string, UpdateSpaceRoleRequest: UpdateSpaceRoleRequest, updateSpaceRoleOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UpdateSpaceRoleResponse>>;
+    public updateSpaceRole(id: string, UpdateSpaceRoleRequest: UpdateSpaceRoleRequest, updateSpaceRoleOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling updateSpaceRole.');
+        }
+
+        if (UpdateSpaceRoleRequest === null || UpdateSpaceRoleRequest === undefined) {
+            throw new Error('Required parameter UpdateSpaceRoleRequest was null or undefined when calling updateSpaceRole.');
+        }
+
+        let headers = {...this.defaultHeaders};
+
+        let accessTokenObservable: Observable<any> = of(null);
+
+        // authentication (basicAuth) required
+        if (this.configuration.username || this.configuration.password) {
+            headers['Authorization'] = 'Basic ' + btoa(this.configuration.username + ':' + this.configuration.password);
+        }
+
+        // authentication (oAuthDefinitions) required
+        if (this.configuration.accessToken) {
+            accessTokenObservable = typeof this.configuration.accessToken === 'function'
+                ? from(Promise.resolve(this.configuration.accessToken()))
+                : from(Promise.resolve(this.configuration.accessToken))
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers['Accept'] = httpHeaderAcceptSelected;
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers['Content-Type'] = httpContentTypeSelected;
+        }
+        return accessTokenObservable.pipe(
+            switchMap((accessToken) => {
+                if (accessToken) {
+                    headers['Authorization'] = `Bearer ${accessToken}`;
+                }
+
+                return this.httpClient.put<UpdateSpaceRoleResponse>(`${this.basePath}/space-roles/${encodeURIComponent(String(id))}`,
+                    UpdateSpaceRoleRequest,
+                    {
+                        withCredentials: this.configuration.withCredentials,
+                        ...updateSpaceRoleOpts?.config,
+                        headers: {...headers, ...updateSpaceRoleOpts?.config?.headers},
                     }
                 );
             })

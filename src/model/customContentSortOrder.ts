@@ -17,13 +17,13 @@
 export type CustomContentSortOrder = 'id' | '-id' | 'created-date' | '-created-date' | 'modified-date' | '-modified-date' | 'title' | '-title';
 
 export const CustomContentSortOrder = {
-    Id: 'id' as CustomContentSortOrder,
-    Id2: '-id' as CustomContentSortOrder,
-    CreatedDate: 'created-date' as CustomContentSortOrder,
-    CreatedDate2: '-created-date' as CustomContentSortOrder,
-    ModifiedDate: 'modified-date' as CustomContentSortOrder,
-    ModifiedDate2: '-modified-date' as CustomContentSortOrder,
-    Title: 'title' as CustomContentSortOrder,
-    Title2: '-title' as CustomContentSortOrder
+    id: 'id' as CustomContentSortOrder,
+    id2: '-id' as CustomContentSortOrder,
+    created_date: 'created-date' as CustomContentSortOrder,
+    created_date2: '-created-date' as CustomContentSortOrder,
+    modified_date: 'modified-date' as CustomContentSortOrder,
+    modified_date2: '-modified-date' as CustomContentSortOrder,
+    title: 'title' as CustomContentSortOrder,
+    title2: '-title' as CustomContentSortOrder
 };
 

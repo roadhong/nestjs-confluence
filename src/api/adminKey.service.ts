@@ -87,13 +87,13 @@ export class AdminKeyService {
     /**
      * Enable Admin Key
      * Enables admin key access for the calling user within the site. If an admin key already exists for the user, a new one will be issued with an updated expiration time.  **Note:** The &#x60;durationInMinutes&#x60; field within the request body is optional. If the request body is empty or if the &#x60;durationInMinutes&#x60; is set to 0 minutes, a new admin key will be issued to the calling user with a default duration of 10 minutes.  **[Permissions](https://support.atlassian.com/user-management/docs/give-users-admin-permissions/#Centralized-user-management-content) required**: User must be an organization or site admin.
-     * @param enableAdminKeyRequest 
+     * @param EnableAdminKeyRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [enableAdminKeyOpts.config] Override http request option.
      */
-    public enableAdminKey(enableAdminKeyRequest?: EnableAdminKeyRequest, enableAdminKeyOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdminKeyResponse>>;
-    public enableAdminKey(enableAdminKeyRequest?: EnableAdminKeyRequest, enableAdminKeyOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public enableAdminKey(EnableAdminKeyRequest?: EnableAdminKeyRequest, enableAdminKeyOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdminKeyResponse>>;
+    public enableAdminKey(EnableAdminKeyRequest?: EnableAdminKeyRequest, enableAdminKeyOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
         let accessTokenObservable: Observable<any> = of(null);
@@ -122,7 +122,7 @@ export class AdminKeyService {
                 }
 
                 return this.httpClient.post<AdminKeyResponse>(`${this.basePath}/admin-key`,
-                    enableAdminKeyRequest,
+                    EnableAdminKeyRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...enableAdminKeyOpts?.config,

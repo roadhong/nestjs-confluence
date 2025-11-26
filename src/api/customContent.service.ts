@@ -52,15 +52,15 @@ export class CustomContentService {
     /**
      * Create custom content
      * Creates a new custom content in the given space, page, blogpost or other custom content.  Only one of &#x60;spaceId&#x60;, &#x60;pageId&#x60;, &#x60;blogPostId&#x60;, or &#x60;customContentId&#x60; is required in the request body. **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the content of the page or blogpost and its corresponding space. Permission to create custom content in the space.
-     * @param createCustomContentRequest 
+     * @param CreateCustomContentRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [createCustomContentOpts.config] Override http request option.
      */
-    public createCustomContent(createCustomContentRequest: CreateCustomContentRequest, createCustomContentOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateCustomContent201Response>>;
-    public createCustomContent(createCustomContentRequest: CreateCustomContentRequest, createCustomContentOpts?: { config?: AxiosRequestConfig }): Observable<any> {
-        if (createCustomContentRequest === null || createCustomContentRequest === undefined) {
-            throw new Error('Required parameter createCustomContentRequest was null or undefined when calling createCustomContent.');
+    public createCustomContent(CreateCustomContentRequest: CreateCustomContentRequest, createCustomContentOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateCustomContent201Response>>;
+    public createCustomContent(CreateCustomContentRequest: CreateCustomContentRequest, createCustomContentOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (CreateCustomContentRequest === null || CreateCustomContentRequest === undefined) {
+            throw new Error('Required parameter CreateCustomContentRequest was null or undefined when calling createCustomContent.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -103,7 +103,7 @@ export class CustomContentService {
                 }
 
                 return this.httpClient.post<CreateCustomContent201Response>(`${this.basePath}/custom-content`,
-                    createCustomContentRequest,
+                    CreateCustomContentRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...createCustomContentOpts?.config,
@@ -181,48 +181,48 @@ export class CustomContentService {
      * Get custom content by id
      * Returns a specific piece of custom content.   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the custom content, the container of the custom content, and the corresponding space (if different from the container).
      * @param id The ID of the custom content to be returned. If you don\&#39;t know the custom content ID, use Get Custom Content by Type and filter the results.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.  Note: If the custom content body type is &#x60;storage&#x60;, the &#x60;storage&#x60; and &#x60;atlas_doc_format&#x60; body formats are able to be returned. If the custom content body type is &#x60;raw&#x60;, only the &#x60;raw&#x60; body format is able to be returned.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.  Note: If the custom content body type is &#x60;storage&#x60;, the &#x60;storage&#x60; and &#x60;atlas_doc_format&#x60; body formats are able to be returned. If the custom content body type is &#x60;raw&#x60;, only the &#x60;raw&#x60; body format is able to be returned.
      * @param version Allows you to retrieve a previously published version. Specify the previous version\&#39;s number to retrieve its details.
-     * @param includeLabels Includes labels associated with this custom content in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeProperties Includes content properties associated with this custom content in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeOperations Includes operations associated with this custom content in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeVersions Includes versions associated with this custom content in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeVersion Includes the current version associated with this custom content in the response. By default this is included and can be omitted by setting the value to &#x60;false&#x60;.
-     * @param includeCollaborators Includes collaborators on the custom content.
+     * @param include_labels Includes labels associated with this custom content in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_properties Includes content properties associated with this custom content in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_operations Includes operations associated with this custom content in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_versions Includes versions associated with this custom content in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_version Includes the current version associated with this custom content in the response. By default this is included and can be omitted by setting the value to &#x60;false&#x60;.
+     * @param include_collaborators Includes collaborators on the custom content.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getCustomContentByIdOpts.config] Override http request option.
      */
-    public getCustomContentById(id: number, bodyFormat?: CustomContentBodyRepresentationSingle, version?: number, includeLabels?: boolean, includeProperties?: boolean, includeOperations?: boolean, includeVersions?: boolean, includeVersion?: boolean, includeCollaborators?: boolean, getCustomContentByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateCustomContent201Response>>;
-    public getCustomContentById(id: number, bodyFormat?: CustomContentBodyRepresentationSingle, version?: number, includeLabels?: boolean, includeProperties?: boolean, includeOperations?: boolean, includeVersions?: boolean, includeVersion?: boolean, includeCollaborators?: boolean, getCustomContentByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getCustomContentById(id: number, body_format?: CustomContentBodyRepresentationSingle, version?: number, include_labels?: boolean, include_properties?: boolean, include_operations?: boolean, include_versions?: boolean, include_version?: boolean, include_collaborators?: boolean, getCustomContentByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateCustomContent201Response>>;
+    public getCustomContentById(id: number, body_format?: CustomContentBodyRepresentationSingle, version?: number, include_labels?: boolean, include_properties?: boolean, include_operations?: boolean, include_versions?: boolean, include_version?: boolean, include_collaborators?: boolean, getCustomContentByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getCustomContentById.');
         }
 
         let queryParameters = new URLSearchParams();
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
         if (version !== undefined && version !== null) {
             queryParameters.append('version', <any>version);
         }
-        if (includeLabels !== undefined && includeLabels !== null) {
-            queryParameters.append('include-labels', <any>includeLabels);
+        if (include_labels !== undefined && include_labels !== null) {
+            queryParameters.append('include-labels', <any>include_labels);
         }
-        if (includeProperties !== undefined && includeProperties !== null) {
-            queryParameters.append('include-properties', <any>includeProperties);
+        if (include_properties !== undefined && include_properties !== null) {
+            queryParameters.append('include-properties', <any>include_properties);
         }
-        if (includeOperations !== undefined && includeOperations !== null) {
-            queryParameters.append('include-operations', <any>includeOperations);
+        if (include_operations !== undefined && include_operations !== null) {
+            queryParameters.append('include-operations', <any>include_operations);
         }
-        if (includeVersions !== undefined && includeVersions !== null) {
-            queryParameters.append('include-versions', <any>includeVersions);
+        if (include_versions !== undefined && include_versions !== null) {
+            queryParameters.append('include-versions', <any>include_versions);
         }
-        if (includeVersion !== undefined && includeVersion !== null) {
-            queryParameters.append('include-version', <any>includeVersion);
+        if (include_version !== undefined && include_version !== null) {
+            queryParameters.append('include-version', <any>include_version);
         }
-        if (includeCollaborators !== undefined && includeCollaborators !== null) {
-            queryParameters.append('include-collaborators', <any>includeCollaborators);
+        if (include_collaborators !== undefined && include_collaborators !== null) {
+            queryParameters.append('include-collaborators', <any>include_collaborators);
         }
 
         let headers = {...this.defaultHeaders};
@@ -275,17 +275,17 @@ export class CustomContentService {
      * Returns all custom content for a given type. The number of results is limited by the &#x60;limit&#x60; parameter and additional results (if available) will be available through the &#x60;next&#x60; URL present in the &#x60;Link&#x60; response header.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the custom content, the container of the custom content, and the corresponding space (if different from the container).
      * @param type The type of custom content being requested. See: https://developer.atlassian.com/cloud/confluence/custom-content/ for additional details on custom content.
      * @param id Filter the results based on custom content ids. Multiple custom content ids can be specified as a comma-separated list.
-     * @param spaceId Filter the results based on space ids. Multiple space ids can be specified as a comma-separated list.
+     * @param space_id Filter the results based on space ids. Multiple space ids can be specified as a comma-separated list.
      * @param sort Used to sort the result by a particular field.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of pages per result to return. If more results exist, use the &#x60;Link&#x60; header to retrieve a relative URL that will return the next set of results.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.  Note: If the custom content body type is &#x60;storage&#x60;, the &#x60;storage&#x60; and &#x60;atlas_doc_format&#x60; body formats are able to be returned. If the custom content body type is &#x60;raw&#x60;, only the &#x60;raw&#x60; body format is able to be returned.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.  Note: If the custom content body type is &#x60;storage&#x60;, the &#x60;storage&#x60; and &#x60;atlas_doc_format&#x60; body formats are able to be returned. If the custom content body type is &#x60;raw&#x60;, only the &#x60;raw&#x60; body format is able to be returned.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getCustomContentByTypeOpts.config] Override http request option.
      */
-    public getCustomContentByType(type: string, id?: Array<number>, spaceId?: Array<number>, sort?: CustomContentSortOrder, cursor?: string, limit?: number, bodyFormat?: CustomContentBodyRepresentation, getCustomContentByTypeOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultCustomContent>>;
-    public getCustomContentByType(type: string, id?: Array<number>, spaceId?: Array<number>, sort?: CustomContentSortOrder, cursor?: string, limit?: number, bodyFormat?: CustomContentBodyRepresentation, getCustomContentByTypeOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getCustomContentByType(type: string, id?: Array<number>, space_id?: Array<number>, sort?: CustomContentSortOrder, cursor?: string, limit?: number, body_format?: CustomContentBodyRepresentation, getCustomContentByTypeOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultCustomContent>>;
+    public getCustomContentByType(type: string, id?: Array<number>, space_id?: Array<number>, sort?: CustomContentSortOrder, cursor?: string, limit?: number, body_format?: CustomContentBodyRepresentation, getCustomContentByTypeOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (type === null || type === undefined) {
             throw new Error('Required parameter type was null or undefined when calling getCustomContentByType.');
         }
@@ -299,8 +299,8 @@ export class CustomContentService {
                 queryParameters.append('id', <any>element);
             })
         }
-        if (spaceId) {
-            spaceId.forEach((element) => {
+        if (space_id) {
+            space_id.forEach((element) => {
                 queryParameters.append('space-id', <any>element);
             })
         }
@@ -313,8 +313,8 @@ export class CustomContentService {
         if (limit !== undefined && limit !== null) {
             queryParameters.append('limit', <any>limit);
         }
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
 
         let headers = {...this.defaultHeaders};
@@ -370,13 +370,13 @@ export class CustomContentService {
      * @param sort Used to sort the result by a particular field.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of pages per result to return. If more results exist, use the &#x60;Link&#x60; header to retrieve a relative URL that will return the next set of results.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.  Note: If the custom content body type is &#x60;storage&#x60;, the &#x60;storage&#x60; and &#x60;atlas_doc_format&#x60; body formats are able to be returned. If the custom content body type is &#x60;raw&#x60;, only the &#x60;raw&#x60; body format is able to be returned.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.  Note: If the custom content body type is &#x60;storage&#x60;, the &#x60;storage&#x60; and &#x60;atlas_doc_format&#x60; body formats are able to be returned. If the custom content body type is &#x60;raw&#x60;, only the &#x60;raw&#x60; body format is able to be returned.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getCustomContentByTypeInBlogPostOpts.config] Override http request option.
      */
-    public getCustomContentByTypeInBlogPost(id: number, type: string, sort?: CustomContentSortOrder, cursor?: string, limit?: number, bodyFormat?: CustomContentBodyRepresentation, getCustomContentByTypeInBlogPostOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultCustomContent>>;
-    public getCustomContentByTypeInBlogPost(id: number, type: string, sort?: CustomContentSortOrder, cursor?: string, limit?: number, bodyFormat?: CustomContentBodyRepresentation, getCustomContentByTypeInBlogPostOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getCustomContentByTypeInBlogPost(id: number, type: string, sort?: CustomContentSortOrder, cursor?: string, limit?: number, body_format?: CustomContentBodyRepresentation, getCustomContentByTypeInBlogPostOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultCustomContent>>;
+    public getCustomContentByTypeInBlogPost(id: number, type: string, sort?: CustomContentSortOrder, cursor?: string, limit?: number, body_format?: CustomContentBodyRepresentation, getCustomContentByTypeInBlogPostOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getCustomContentByTypeInBlogPost.');
         }
@@ -398,8 +398,8 @@ export class CustomContentService {
         if (limit !== undefined && limit !== null) {
             queryParameters.append('limit', <any>limit);
         }
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
 
         let headers = {...this.defaultHeaders};
@@ -455,13 +455,13 @@ export class CustomContentService {
      * @param sort Used to sort the result by a particular field.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of pages per result to return. If more results exist, use the &#x60;Link&#x60; header to retrieve a relative URL that will return the next set of results.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.  Note: If the custom content body type is &#x60;storage&#x60;, the &#x60;storage&#x60; and &#x60;atlas_doc_format&#x60; body formats are able to be returned. If the custom content body type is &#x60;raw&#x60;, only the &#x60;raw&#x60; body format is able to be returned.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.  Note: If the custom content body type is &#x60;storage&#x60;, the &#x60;storage&#x60; and &#x60;atlas_doc_format&#x60; body formats are able to be returned. If the custom content body type is &#x60;raw&#x60;, only the &#x60;raw&#x60; body format is able to be returned.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getCustomContentByTypeInPageOpts.config] Override http request option.
      */
-    public getCustomContentByTypeInPage(id: number, type: string, sort?: CustomContentSortOrder, cursor?: string, limit?: number, bodyFormat?: CustomContentBodyRepresentation, getCustomContentByTypeInPageOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultCustomContent>>;
-    public getCustomContentByTypeInPage(id: number, type: string, sort?: CustomContentSortOrder, cursor?: string, limit?: number, bodyFormat?: CustomContentBodyRepresentation, getCustomContentByTypeInPageOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getCustomContentByTypeInPage(id: number, type: string, sort?: CustomContentSortOrder, cursor?: string, limit?: number, body_format?: CustomContentBodyRepresentation, getCustomContentByTypeInPageOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultCustomContent>>;
+    public getCustomContentByTypeInPage(id: number, type: string, sort?: CustomContentSortOrder, cursor?: string, limit?: number, body_format?: CustomContentBodyRepresentation, getCustomContentByTypeInPageOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getCustomContentByTypeInPage.');
         }
@@ -483,8 +483,8 @@ export class CustomContentService {
         if (limit !== undefined && limit !== null) {
             queryParameters.append('limit', <any>limit);
         }
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
 
         let headers = {...this.defaultHeaders};
@@ -539,13 +539,13 @@ export class CustomContentService {
      * @param type The type of custom content being requested. See: https://developer.atlassian.com/cloud/confluence/custom-content/ for additional details on custom content.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of pages per result to return. If more results exist, use the &#x60;Link&#x60; header to retrieve a relative URL that will return the next set of results.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.  Note: If the custom content body type is &#x60;storage&#x60;, the &#x60;storage&#x60; and &#x60;atlas_doc_format&#x60; body formats are able to be returned. If the custom content body type is &#x60;raw&#x60;, only the &#x60;raw&#x60; body format is able to be returned.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.  Note: If the custom content body type is &#x60;storage&#x60;, the &#x60;storage&#x60; and &#x60;atlas_doc_format&#x60; body formats are able to be returned. If the custom content body type is &#x60;raw&#x60;, only the &#x60;raw&#x60; body format is able to be returned.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getCustomContentByTypeInSpaceOpts.config] Override http request option.
      */
-    public getCustomContentByTypeInSpace(id: number, type: string, cursor?: string, limit?: number, bodyFormat?: CustomContentBodyRepresentation, getCustomContentByTypeInSpaceOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultCustomContent>>;
-    public getCustomContentByTypeInSpace(id: number, type: string, cursor?: string, limit?: number, bodyFormat?: CustomContentBodyRepresentation, getCustomContentByTypeInSpaceOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getCustomContentByTypeInSpace(id: number, type: string, cursor?: string, limit?: number, body_format?: CustomContentBodyRepresentation, getCustomContentByTypeInSpaceOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultCustomContent>>;
+    public getCustomContentByTypeInSpace(id: number, type: string, cursor?: string, limit?: number, body_format?: CustomContentBodyRepresentation, getCustomContentByTypeInSpaceOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getCustomContentByTypeInSpace.');
         }
@@ -564,8 +564,8 @@ export class CustomContentService {
         if (limit !== undefined && limit !== null) {
             queryParameters.append('limit', <any>limit);
         }
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
 
         let headers = {...this.defaultHeaders};
@@ -617,19 +617,19 @@ export class CustomContentService {
      * Update custom content
      * Update a custom content by id. At most one of &#x60;spaceId&#x60;, &#x60;pageId&#x60;, &#x60;blogPostId&#x60;, or &#x60;customContentId&#x60; is allowed in the request body. Note that if &#x60;spaceId&#x60; is specified, it must be the same as the &#x60;spaceId&#x60; used for creating the custom content as moving custom content to a different space is not supported.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the content of the page or blogpost and its corresponding space. Permission to update custom content in the space.
      * @param id The ID of the custom content to be updated. If you don\&#39;t know the custom content ID, use Get Custom Content by Type and filter the results.
-     * @param updateCustomContentRequest 
+     * @param UpdateCustomContentRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateCustomContentOpts.config] Override http request option.
      */
-    public updateCustomContent(id: number, updateCustomContentRequest: UpdateCustomContentRequest, updateCustomContentOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateCustomContent201Response>>;
-    public updateCustomContent(id: number, updateCustomContentRequest: UpdateCustomContentRequest, updateCustomContentOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public updateCustomContent(id: number, UpdateCustomContentRequest: UpdateCustomContentRequest, updateCustomContentOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateCustomContent201Response>>;
+    public updateCustomContent(id: number, UpdateCustomContentRequest: UpdateCustomContentRequest, updateCustomContentOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateCustomContent.');
         }
 
-        if (updateCustomContentRequest === null || updateCustomContentRequest === undefined) {
-            throw new Error('Required parameter updateCustomContentRequest was null or undefined when calling updateCustomContent.');
+        if (UpdateCustomContentRequest === null || UpdateCustomContentRequest === undefined) {
+            throw new Error('Required parameter UpdateCustomContentRequest was null or undefined when calling updateCustomContent.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -672,7 +672,7 @@ export class CustomContentService {
                 }
 
                 return this.httpClient.put<CreateCustomContent201Response>(`${this.basePath}/custom-content/${encodeURIComponent(String(id))}`,
-                    updateCustomContentRequest,
+                    UpdateCustomContentRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...updateCustomContentOpts?.config,

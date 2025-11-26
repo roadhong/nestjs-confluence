@@ -27,6 +27,7 @@
       "description": "The [Admin Key feature](https://support.atlassian.com/confluence-cloud/docs/bypass-access-restrictions-on-a-page-with-admin-key/) is only offered with Confluence Cloud Premium and Enterprise to organization or site admins.\n\n**NOTE:** Users can only make calls to our public REST APIs using a valid Admin Key by adding the following HTTP header on their requests: `Atl-Confluence-With-Admin-Key: true`. Visit the [Confluence Cloud Changelog](https://developer.atlassian.com/cloud/confluence/changelog/#CHANGE-2480) for more details."
     },
     { "name": "Attachment", "description": "" },
+    { "name": "App Properties", "description": "" },
     { "name": "Ancestors", "description": "" },
     { "name": "Blog Post", "description": "" },
     { "name": "Children", "description": "" },
@@ -10287,7 +10288,15 @@
             "description": "Filter the results to spaces based on their type.",
             "schema": {
               "type": "string",
-              "enum": ["global", "collaboration", "knowledge_base", "personal"]
+              "enum": [
+                "global",
+                "collaboration",
+                "knowledge_base",
+                "personal",
+                "system",
+                "onboarding",
+                "xflow_sample_space"
+              ]
             }
           },
           {
@@ -10417,7 +10426,7 @@
         "tags": ["Space", "EAP"],
         "operationId": "createSpace",
         "summary": "Create space",
-        "description": "Creates a Space as specified in the payload.\n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to create spaces.",
+        "description": "Creates a Space as specified in the payload.\n\nAvailable as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550). \n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to create spaces.",
         "requestBody": {
           "$ref": "#/components/requestBodies/SpaceCreateRequest"
         },
@@ -11707,7 +11716,7 @@
         "tags": ["Space Permissions", "EAP"],
         "operationId": "getAvailableSpacePermissions",
         "summary": "Get available space permissions",
-        "description": "Retrieves the available space permissions.\n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to access the Confluence site.",
+        "description": "Retrieves the available space permissions.\n\nAvailable as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550). \n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to access the Confluence site.",
         "parameters": [
           {
             "name": "cursor",
@@ -11788,7 +11797,7 @@
         "tags": ["Space Roles", "EAP"],
         "operationId": "getAvailableSpaceRoles",
         "summary": "Get available space roles",
-        "description": "Retrieves the available space roles.\n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to access the Confluence site; if requesting a certain space's roles, permission to view the space.",
+        "description": "Retrieves the available space roles.\n\nAvailable as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550). \n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to access the Confluence site; if requesting a certain space's roles, permission to view the space.",
         "parameters": [
           {
             "name": "space-id",
@@ -11888,6 +11897,76 @@
           { "app-access-rule-exempt": true }
         ],
         "x-experimental": true
+      },
+      "post": {
+        "tags": ["Space Roles"],
+        "operationId": "createSpaceRole",
+        "summary": "Create a space role",
+        "description": "Create a space role.\n\nAvailable as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550). \n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nUser must be an organization or site admin. Connect and Forge app users are not authorized to access this resource.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "description", "spacePermissions"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the space role"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description for the space role"
+                  },
+                  "spacePermissions": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "description": "The ids of the space permissions associated with the space role. Sample value \"read/space\"; retrieve ids from responses returned by [GET /space-permissions](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-space-permissions/#api-space-permissions-get) endpoint"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Returned if the requested space role is created.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SpaceRole" }
+              }
+            }
+          },
+          "400": {
+            "description": "Returned if an invalid request is provided.",
+            "content": {}
+          },
+          "401": {
+            "description": "Returned if the authentication credentials are incorrect or missing from the request.",
+            "content": {}
+          },
+          "404": {
+            "description": "Returned if the calling user does not have permission to create space roles.",
+            "content": {}
+          }
+        },
+        "security": [
+          { "basicAuth": [] },
+          { "oAuthDefinitions": ["write:configuration:confluence"] }
+        ],
+        "x-atlassian-oauth2-scopes": [
+          {
+            "scheme": "oAuthDefinitions",
+            "state": "Current",
+            "scopes": ["write:configuration:confluence"]
+          }
+        ],
+        "x-atlassian-connect-scope": "ADMIN",
+        "x-atlassian-data-security-policy": [
+          { "app-access-rule-exempt": true }
+        ],
+        "x-experimental": true
       }
     },
     "/space-roles/{id}": {
@@ -11895,7 +11974,7 @@
         "tags": ["Space Roles", "EAP"],
         "operationId": "getSpaceRolesById",
         "summary": "Get space role by ID",
-        "description": "Retrieves the space role by ID.\n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to access the Confluence site.",
+        "description": "Retrieves the space role by ID.\n\nAvailable as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550). \n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to access the Confluence site.",
         "parameters": [
           {
             "name": "id",
@@ -11961,6 +12040,205 @@
           { "app-access-rule-exempt": true }
         ],
         "x-experimental": true
+      },
+      "put": {
+        "tags": ["Space Roles"],
+        "operationId": "updateSpaceRole",
+        "summary": "Update a space role",
+        "description": "Update a space role.\n\nAvailable as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550). \n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nUser must be an organization or site admin. Connect and Forge app users are not authorized to access this resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Id of the space role",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "description", "spacePermissions"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the space role"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description for the space role"
+                  },
+                  "spacePermissions": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "description": "The ids of the space permissions associated with the space role. Sample value \"read/space\"; retrieve ids from responses returned by [GET /space-permissions](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-space-permissions/#api-space-permissions-get) endpoint"
+                  },
+                  "anonymousReassignmentRoleId": {
+                    "type": "string",
+                    "description": "If space anonymous access is assigned to the role being modified, the Id of a role to migrate those assignments to can be specified. Anonymous access role assignments left unchanged if unspecified."
+                  },
+                  "guestReassignmentRoleId": {
+                    "type": "string",
+                    "description": "If guests are assigned to the role being modified, the Id of a role to migrate those assignments to can be specified. Guest role assignments left unchanged if unspecified."
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Returned if the update of the space role was accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSpaceRoleResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Returned if an invalid request is provided.",
+            "content": {}
+          },
+          "401": {
+            "description": "Returned if the authentication credentials are incorrect or missing from the request.",
+            "content": {}
+          },
+          "404": {
+            "description": "Returned if the calling user does not have permission to update space roles.",
+            "content": {}
+          }
+        },
+        "security": [
+          { "basicAuth": [] },
+          { "oAuthDefinitions": ["write:configuration:confluence"] }
+        ],
+        "x-atlassian-oauth2-scopes": [
+          {
+            "scheme": "oAuthDefinitions",
+            "state": "Current",
+            "scopes": ["write:configuration:confluence"]
+          }
+        ],
+        "x-atlassian-connect-scope": "ADMIN",
+        "x-atlassian-data-security-policy": [
+          { "app-access-rule-exempt": true }
+        ],
+        "x-experimental": true
+      },
+      "delete": {
+        "tags": ["Space Roles"],
+        "operationId": "deleteSpaceRole",
+        "summary": "Delete a space role",
+        "description": "Delete a space role\n\nAvailable as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550). \n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nUser must be an organization or site admin. Connect and Forge app users are not authorized to access this resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Id of the space role",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Returned if the deletion of the space role was accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteSpaceRoleResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Returned if an invalid request is provided.",
+            "content": {}
+          },
+          "401": {
+            "description": "Returned if the authentication credentials are incorrect or missing from the request.",
+            "content": {}
+          },
+          "404": {
+            "description": "Returned if the calling user does not have permission to delete space roles.",
+            "content": {}
+          }
+        },
+        "security": [
+          { "basicAuth": [] },
+          { "oAuthDefinitions": ["write:configuration:confluence"] }
+        ],
+        "x-atlassian-oauth2-scopes": [
+          {
+            "scheme": "oAuthDefinitions",
+            "state": "Current",
+            "scopes": ["write:configuration:confluence"]
+          }
+        ],
+        "x-atlassian-connect-scope": "ADMIN",
+        "x-atlassian-data-security-policy": [
+          { "app-access-rule-exempt": true }
+        ],
+        "x-experimental": true
+      }
+    },
+    "/space-role-mode": {
+      "get": {
+        "tags": ["Space Roles"],
+        "operationId": "getSpaceRoleMode",
+        "summary": "Get space role mode",
+        "description": "Retrieves the space role mode.\n\nAvailable as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550). \n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to access the Confluence site ('Can use' global permission).",
+        "responses": {
+          "200": {
+            "description": "Returned if the requested space role mode is returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mode": {
+                      "type": "string",
+                      "description": "The space role mode.",
+                      "enum": ["PRE_ROLES", "ROLES_TRANSITION", "ROLES"]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Returned if an invalid request is provided.",
+            "content": {}
+          },
+          "401": {
+            "description": "Returned if the authentication credentials are incorrect or missing from the request.",
+            "content": {}
+          },
+          "404": {
+            "description": "Returned if the calling user does not have permission to view the space role mode.",
+            "content": {}
+          }
+        },
+        "security": [
+          { "basicAuth": [] },
+          { "oAuthDefinitions": ["read:configuration:confluence"] }
+        ],
+        "x-atlassian-oauth2-scopes": [
+          {
+            "scheme": "oAuthDefinitions",
+            "state": "Current",
+            "scopes": ["read:configuration:confluence"]
+          }
+        ],
+        "x-atlassian-connect-scope": "READ",
+        "x-atlassian-data-security-policy": [
+          { "app-access-rule-exempt": true }
+        ],
+        "x-experimental": true
       }
     },
     "/spaces/{id}/role-assignments": {
@@ -11968,7 +12246,7 @@
         "tags": ["Space Roles", "EAP"],
         "operationId": "getSpaceRoleAssignments",
         "summary": "Get space role assignments",
-        "description": "Retrieves the space role assignments.\n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to view the space.",
+        "description": "Retrieves the space role assignments.\n\nAvailable as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550). \n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to view the space.",
         "parameters": [
           {
             "name": "id",
@@ -12082,7 +12360,7 @@
         "tags": ["Space Roles", "EAP"],
         "operationId": "setSpaceRoleAssignments",
         "summary": "Set space role assignments",
-        "description": "Sets space role assignments as specified in the payload.\n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to manage roles in the space.",
+        "description": "Sets space role assignments as specified in the payload.\n\nAvailable as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550). \n\n**[Permissions](https://confluence.atlassian.com/x/_AozKw) required**:\nPermission to manage roles in the space.",
         "parameters": [
           {
             "name": "id",
@@ -16855,6 +17133,248 @@
           { "app-access-rule-exempt": false }
         ]
       }
+    },
+    "/app/properties": {
+      "get": {
+        "tags": ["App Properties"],
+        "summary": "Get Forge app properties.",
+        "operationId": "getForgeAppProperties",
+        "description": "Gets Forge app properties. This API can only be accessed using **[asApp()](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestconfluence/#method-signature)** requests from Forge.",
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Used for pagination, this opaque cursor represents the last returned property key. It will be included in the response body as the next link. Use this key to request the next set of results.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of app properties per result to return. If more results exist, use the last returned property key from the Link field in the response body as a cursor to retrieve the next set of results.",
+            "schema": {
+              "format": "int32",
+              "default": 50,
+              "minimum": 1,
+              "maximum": 250,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Forge app properties returned on success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "MultiEntityResult<AppProperty>",
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "description": "The key of the property"
+                          },
+                          "value": {
+                            "type": "object",
+                            "description": "The value of the property"
+                          }
+                        }
+                      }
+                    },
+                    "_links": {
+                      "$ref": "#/components/schemas/MultiEntityLinks"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The request did not originate from the Forge app."
+          },
+          "403": {
+            "description": "Returned when the request is forbidden due to one of the following:\n- The request attempts impersonation. Only requests made using `asApp()` are allowed.\n- The Forge app is not installed."
+          }
+        },
+        "security": [{ "oAuthDefinitions": ["read:app-data:confluence"] }],
+        "x-atlassian-oauth2-scopes": [
+          {
+            "scheme": "oAuthDefinitions",
+            "state": "Current",
+            "scopes": ["read:app-data:confluence"]
+          }
+        ],
+        "x-experimental": true,
+        "x-atlassian-data-security-policy": [
+          { "app-access-rule-exempt": true }
+        ],
+        "x-atlassian-connect-scope": "INACCESSIBLE"
+      }
+    },
+    "/app/properties/{propertyKey}": {
+      "get": {
+        "tags": ["App Properties"],
+        "summary": "Get a Forge app property by key.",
+        "operationId": "getForgeAppProperty",
+        "description": "Gets a Forge app property by property key. This API can only be accessed using **[asApp()](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestconfluence/#method-signature)** requests from Forge.",
+        "parameters": [
+          {
+            "name": "propertyKey",
+            "in": "path",
+            "required": true,
+            "description": "The key of the property",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "App property returned on success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "description": "The key of the property"
+                    },
+                    "value": {
+                      "type": "object",
+                      "description": "The value of the property"
+                    }
+                  },
+                  "example": {
+                    "key": "user-preferences",
+                    "value": { "theme": "dark", "language": "en" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Property key longer than 127 characters." },
+          "401": {
+            "description": "The request did not originate from the Forge app."
+          },
+          "403": {
+            "description": "Returned when the request is forbidden due to one of the following:\n- The request attempts impersonation. Only requests made using `asApp()` are allowed.\n- The Forge app is not installed."
+          },
+          "404": { "description": "App property not found." }
+        },
+        "security": [{ "oAuthDefinitions": ["read:app-data:confluence"] }],
+        "x-atlassian-oauth2-scopes": [
+          {
+            "scheme": "oAuthDefinitions",
+            "state": "Current",
+            "scopes": ["read:app-data:confluence"]
+          }
+        ],
+        "x-experimental": true,
+        "x-atlassian-data-security-policy": [
+          { "app-access-rule-exempt": true }
+        ],
+        "x-atlassian-connect-scope": "INACCESSIBLE"
+      },
+      "put": {
+        "tags": ["App Properties"],
+        "summary": "Create or update a Forge app property.",
+        "operationId": "putForgeAppProperty",
+        "description": "Creates or updates a Forge app property. This API can only be accessed using **[asApp()](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestconfluence/#method-signature)** requests from Forge.",
+        "parameters": [
+          {
+            "name": "propertyKey",
+            "in": "path",
+            "required": true,
+            "description": "The key of the property",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Forge app",
+                  "darkMode": true,
+                  "version": "1.0.0",
+                  "buildNumber": 7
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": { "description": "Property updated." },
+          "201": { "description": "Property created." },
+          "400": {
+            "description": "Property key longer than 127 characters, or request made with invalid JSON."
+          },
+          "401": {
+            "description": "The request did not originate from the Forge app."
+          },
+          "403": {
+            "description": "Returned when the request is forbidden due to one of the following:\n- The request attempts impersonation. Only requests made using `asApp()` are allowed.\n- The Forge app is not installed."
+          }
+        },
+        "security": [{ "oAuthDefinitions": ["write:app-data:confluence"] }],
+        "x-atlassian-oauth2-scopes": [
+          {
+            "scheme": "oAuthDefinitions",
+            "state": "Current",
+            "scopes": ["write:app-data:confluence"]
+          }
+        ],
+        "x-experimental": true,
+        "x-atlassian-data-security-policy": [
+          { "app-access-rule-exempt": true }
+        ],
+        "x-atlassian-connect-scope": "INACCESSIBLE"
+      },
+      "delete": {
+        "tags": ["App Properties"],
+        "summary": "Deletes a Forge app property.",
+        "operationId": "deleteForgeAppProperty",
+        "description": "Deletes a Forge app property. This API can only be accessed using **[asApp()](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestconfluence/#method-signature)** requests from Forge.",
+        "parameters": [
+          {
+            "name": "propertyKey",
+            "in": "path",
+            "required": true,
+            "description": "The key of the property",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Property deleted." },
+          "400": { "description": "Property key longer than 127 characters" },
+          "401": {
+            "description": "The request did not originate from the Forge app."
+          },
+          "403": {
+            "description": "Returned when the request is forbidden due to one of the following:\n- The request attempts impersonation. Only requests made using `asApp()` are allowed.\n- The Forge app is not installed."
+          }
+        },
+        "security": [{ "oAuthDefinitions": ["write:app-data:confluence"] }],
+        "x-atlassian-oauth2-scopes": [
+          {
+            "scheme": "oAuthDefinitions",
+            "state": "Current",
+            "scopes": ["write:app-data:confluence"]
+          }
+        ],
+        "x-experimental": true,
+        "x-atlassian-data-security-policy": [
+          { "app-access-rule-exempt": true }
+        ],
+        "x-atlassian-connect-scope": "INACCESSIBLE"
+      }
     }
   },
   "components": {
@@ -17567,13 +18087,15 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "required": ["principal"],
-              "properties": {
-                "principal": { "$ref": "#/components/schemas/Principal" },
-                "roleId": {
-                  "type": "string",
-                  "description": "The role to which the principal is assigned."
+              "type": "array",
+              "items": {
+                "required": ["principal"],
+                "properties": {
+                  "principal": { "$ref": "#/components/schemas/Principal" },
+                  "roleId": {
+                    "type": "string",
+                    "description": "The role to which the principal is assigned."
+                  }
                 }
               }
             }
@@ -17626,6 +18148,18 @@
                       }
                     }
                   }
+                },
+                "copySpaceAccessConfiguration": {
+                  "type": "integer",
+                  "description": "The id of the space to copy the space access configuration from."
+                },
+                "createPrivateSpace": {
+                  "type": "boolean",
+                  "description": "Whether to create the space as private."
+                },
+                "templateKey": {
+                  "type": "string",
+                  "description": "The key of the template to use."
                 }
               }
             }
@@ -18815,6 +19349,10 @@
             "format": "date-time",
             "description": "Date and time when the whiteboard was created. In format \"YYYY-MM-DDTHH:mm:ss.sssZ\"."
           },
+          "spaceId": {
+            "type": "string",
+            "description": "ID of the space the whiteboard is in."
+          },
           "version": { "$ref": "#/components/schemas/Version" },
           "_links": { "$ref": "#/components/schemas/WhiteboardLinks" }
         }
@@ -18855,6 +19393,10 @@
             "type": "string",
             "format": "date-time",
             "description": "Date and time when the database was created. In format \"YYYY-MM-DDTHH:mm:ss.sssZ\"."
+          },
+          "spaceId": {
+            "type": "string",
+            "description": "ID of the space the database is in."
           },
           "version": { "$ref": "#/components/schemas/Version" },
           "_links": { "$ref": "#/components/schemas/DatabaseLinks" }
@@ -18904,6 +19446,10 @@
             "type": "string",
             "description": "The embedded URL of the Smart Link. If the Smart Link does not have an embedded URL, this property will not be included in the response."
           },
+          "spaceId": {
+            "type": "string",
+            "description": "ID of the space the Smart Link is in."
+          },
           "version": { "$ref": "#/components/schemas/Version" },
           "_links": { "$ref": "#/components/schemas/SmartLinkLinks" }
         }
@@ -18941,6 +19487,10 @@
             "type": "string",
             "format": "date-time",
             "description": "Date and time when the folder was created. In format \"YYYY-MM-DDTHH:mm:ss.sssZ\"."
+          },
+          "spaceId": {
+            "type": "string",
+            "description": "ID of the space the folder is in."
           },
           "version": { "$ref": "#/components/schemas/Version" },
           "_links": { "$ref": "#/components/schemas/FolderLinks" }
@@ -19123,6 +19673,10 @@
             "type": "string",
             "description": "The account ID of the user who created this space originally."
           },
+          "currentActiveAlias": {
+            "type": "string",
+            "description": "Currently active alias for a Confluence space."
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -19250,9 +19804,9 @@
             "description": "The identifier for the space role."
           },
           "type": { "$ref": "#/components/schemas/RoleType" },
-          "displayName": {
+          "name": {
             "type": "string",
-            "description": "The display name for the space role."
+            "description": "The name for the space role."
           },
           "description": {
             "type": "string",
@@ -19262,6 +19816,31 @@
             "type": "array",
             "items": { "type": "string" },
             "description": "The space permissions the space role is comprised of."
+          }
+        }
+      },
+      "UpdateSpaceRoleResponse": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "description": "Id of the space role" },
+          "type": { "$ref": "#/components/schemas/RoleType" },
+          "name": { "type": "string", "description": "Name of the space role" },
+          "description": {
+            "type": "string",
+            "description": "Description for the space role"
+          },
+          "taskId": {
+            "type": "string",
+            "description": "Id of the task to update the space permissions associated with the space role"
+          }
+        }
+      },
+      "DeleteSpaceRoleResponse": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "description": "Id of the task to update the space permissions associated with the space role"
           }
         }
       },
@@ -19378,7 +19957,15 @@
         }
       },
       "SpaceType": {
-        "enum": ["global", "collaboration", "knowledge_base", "personal"],
+        "enum": [
+          "global",
+          "collaboration",
+          "knowledge_base",
+          "personal",
+          "system",
+          "onboarding",
+          "xflow_sample_space"
+        ],
         "type": "string",
         "description": "The type of space."
       },
@@ -19815,16 +20402,6 @@
           "inlineOriginalSelection": {
             "type": "string",
             "description": "Text that is highlighted."
-          },
-          "inline-marker-ref": {
-            "type": "string",
-            "deprecated": true,
-            "description": "Deprecated, use `inlineMarkerRef` instead."
-          },
-          "inline-original-selection": {
-            "type": "string",
-            "deprecated": true,
-            "description": "Deprecated, use `inlineOriginalSelection` instead."
           }
         }
       },
@@ -20089,16 +20666,6 @@
               "inlineOriginalSelection": {
                 "type": "string",
                 "description": "Text that is highlighted."
-              },
-              "inline-marker-ref": {
-                "type": "string",
-                "deprecated": true,
-                "description": "Deprecated, use `inlineMarkerRef` instead."
-              },
-              "inline-original-selection": {
-                "type": "string",
-                "deprecated": true,
-                "description": "Deprecated, use `inlineOriginalSelection` instead."
               }
             }
           },
@@ -20519,6 +21086,7 @@
               "write:database:confluence": "Create and update databases and their properties.",
               "write:embed:confluence": "Create and update Smart Links in the content tree and their properties.",
               "write:folder:confluence": "Create and update folders and their properties.",
+              "write:app-data:confluence": "Create, update and delete app properties.",
               "delete:custom-content:confluence": "Delete custom content.",
               "delete:page:confluence": "Delete pages and blog posts.",
               "delete:comment:confluence": "Delete comments.",

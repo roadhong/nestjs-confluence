@@ -17,10 +17,10 @@
 export type AncestorType = 'page' | 'whiteboard' | 'database' | 'embed' | 'folder';
 
 export const AncestorType = {
-    Page: 'page' as AncestorType,
-    Whiteboard: 'whiteboard' as AncestorType,
-    Database: 'database' as AncestorType,
-    Embed: 'embed' as AncestorType,
-    Folder: 'folder' as AncestorType
+    page: 'page' as AncestorType,
+    whiteboard: 'whiteboard' as AncestorType,
+    database: 'database' as AncestorType,
+    embed: 'embed' as AncestorType,
+    folder: 'folder' as AncestorType
 };
 

@@ -24,9 +24,9 @@ export interface SpacePermissionAssignmentPrincipal {
 export namespace SpacePermissionAssignmentPrincipal {
     export type TypeEnum = 'user' | 'group' | 'role';
     export const TypeEnum = {
-        User: 'user' as TypeEnum,
-        Group: 'group' as TypeEnum,
-        Role: 'role' as TypeEnum
+        user: 'user' as TypeEnum,
+        group: 'group' as TypeEnum,
+        role: 'role' as TypeEnum
     };
 }
 

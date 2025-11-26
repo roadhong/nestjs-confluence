@@ -17,9 +17,9 @@
 export type AccountStatus = 'active' | 'inactive' | 'closed' | 'unknown';
 
 export const AccountStatus = {
-    Active: 'active' as AccountStatus,
-    Inactive: 'inactive' as AccountStatus,
-    Closed: 'closed' as AccountStatus,
-    Unknown: 'unknown' as AccountStatus
+    active: 'active' as AccountStatus,
+    inactive: 'inactive' as AccountStatus,
+    closed: 'closed' as AccountStatus,
+    unknown: 'unknown' as AccountStatus
 };
 

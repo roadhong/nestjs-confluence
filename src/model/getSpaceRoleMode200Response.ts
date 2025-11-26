@@ -9,14 +9,21 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Principal } from './principal';
 
 
-export interface SetSpaceRoleAssignmentsRequest { 
-    principal: Principal;
+export interface GetSpaceRoleMode200Response { 
     /**
-     * The role to which the principal is assigned.
+     * The space role mode.
      */
-    roleId?: string;
+    mode?: GetSpaceRoleMode200Response.ModeEnum;
 }
+export namespace GetSpaceRoleMode200Response {
+    export type ModeEnum = 'PRE_ROLES' | 'ROLES_TRANSITION' | 'ROLES';
+    export const ModeEnum = {
+        PRE_ROLES: 'PRE_ROLES' as ModeEnum,
+        ROLES_TRANSITION: 'ROLES_TRANSITION' as ModeEnum,
+        ROLES: 'ROLES' as ModeEnum
+    };
+}
+
 

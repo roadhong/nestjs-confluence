@@ -27,35 +27,35 @@ export interface SpacePermissionAssignmentOperation {
 export namespace SpacePermissionAssignmentOperation {
     export type KeyEnum = 'use' | 'create' | 'read' | 'update' | 'delete' | 'copy' | 'move' | 'export' | 'purge' | 'purge_version' | 'administer' | 'restore' | 'create_space' | 'restrict_content' | 'archive';
     export const KeyEnum = {
-        Use: 'use' as KeyEnum,
-        Create: 'create' as KeyEnum,
-        Read: 'read' as KeyEnum,
-        Update: 'update' as KeyEnum,
-        Delete: 'delete' as KeyEnum,
-        Copy: 'copy' as KeyEnum,
-        Move: 'move' as KeyEnum,
-        Export: 'export' as KeyEnum,
-        Purge: 'purge' as KeyEnum,
-        PurgeVersion: 'purge_version' as KeyEnum,
-        Administer: 'administer' as KeyEnum,
-        Restore: 'restore' as KeyEnum,
-        CreateSpace: 'create_space' as KeyEnum,
-        RestrictContent: 'restrict_content' as KeyEnum,
-        Archive: 'archive' as KeyEnum
+        use: 'use' as KeyEnum,
+        create: 'create' as KeyEnum,
+        read: 'read' as KeyEnum,
+        update: 'update' as KeyEnum,
+        delete: 'delete' as KeyEnum,
+        copy: 'copy' as KeyEnum,
+        move: 'move' as KeyEnum,
+        export: 'export' as KeyEnum,
+        purge: 'purge' as KeyEnum,
+        purge_version: 'purge_version' as KeyEnum,
+        administer: 'administer' as KeyEnum,
+        restore: 'restore' as KeyEnum,
+        create_space: 'create_space' as KeyEnum,
+        restrict_content: 'restrict_content' as KeyEnum,
+        archive: 'archive' as KeyEnum
     };
     export type TargetTypeEnum = 'page' | 'blogpost' | 'comment' | 'attachment' | 'whiteboard' | 'database' | 'embed' | 'folder' | 'space' | 'application' | 'userProfile';
     export const TargetTypeEnum = {
-        Page: 'page' as TargetTypeEnum,
-        Blogpost: 'blogpost' as TargetTypeEnum,
-        Comment: 'comment' as TargetTypeEnum,
-        Attachment: 'attachment' as TargetTypeEnum,
-        Whiteboard: 'whiteboard' as TargetTypeEnum,
-        Database: 'database' as TargetTypeEnum,
-        Embed: 'embed' as TargetTypeEnum,
-        Folder: 'folder' as TargetTypeEnum,
-        Space: 'space' as TargetTypeEnum,
-        Application: 'application' as TargetTypeEnum,
-        UserProfile: 'userProfile' as TargetTypeEnum
+        page: 'page' as TargetTypeEnum,
+        blogpost: 'blogpost' as TargetTypeEnum,
+        comment: 'comment' as TargetTypeEnum,
+        attachment: 'attachment' as TargetTypeEnum,
+        whiteboard: 'whiteboard' as TargetTypeEnum,
+        database: 'database' as TargetTypeEnum,
+        embed: 'embed' as TargetTypeEnum,
+        folder: 'folder' as TargetTypeEnum,
+        space: 'space' as TargetTypeEnum,
+        application: 'application' as TargetTypeEnum,
+        userProfile: 'userProfile' as TargetTypeEnum
     };
 }
 

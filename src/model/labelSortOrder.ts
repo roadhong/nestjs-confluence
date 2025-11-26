@@ -17,11 +17,11 @@
 export type LabelSortOrder = 'created-date' | '-created-date' | 'id' | '-id' | 'name' | '-name';
 
 export const LabelSortOrder = {
-    CreatedDate: 'created-date' as LabelSortOrder,
-    CreatedDate2: '-created-date' as LabelSortOrder,
-    Id: 'id' as LabelSortOrder,
-    Id2: '-id' as LabelSortOrder,
-    Name: 'name' as LabelSortOrder,
-    Name2: '-name' as LabelSortOrder
+    created_date: 'created-date' as LabelSortOrder,
+    created_date2: '-created-date' as LabelSortOrder,
+    id: 'id' as LabelSortOrder,
+    id2: '-id' as LabelSortOrder,
+    name: 'name' as LabelSortOrder,
+    name2: '-name' as LabelSortOrder
 };
 

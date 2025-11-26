@@ -14,16 +14,16 @@
 export type ClassificationLevelColor = 'RED' | 'RED_BOLD' | 'ORANGE' | 'YELLOW' | 'GREEN' | 'BLUE' | 'NAVY' | 'TEAL' | 'PURPLE' | 'GREY' | 'LIME';
 
 export const ClassificationLevelColor = {
-    Red: 'RED' as ClassificationLevelColor,
-    RedBold: 'RED_BOLD' as ClassificationLevelColor,
-    Orange: 'ORANGE' as ClassificationLevelColor,
-    Yellow: 'YELLOW' as ClassificationLevelColor,
-    Green: 'GREEN' as ClassificationLevelColor,
-    Blue: 'BLUE' as ClassificationLevelColor,
-    Navy: 'NAVY' as ClassificationLevelColor,
-    Teal: 'TEAL' as ClassificationLevelColor,
-    Purple: 'PURPLE' as ClassificationLevelColor,
-    Grey: 'GREY' as ClassificationLevelColor,
-    Lime: 'LIME' as ClassificationLevelColor
+    RED: 'RED' as ClassificationLevelColor,
+    RED_BOLD: 'RED_BOLD' as ClassificationLevelColor,
+    ORANGE: 'ORANGE' as ClassificationLevelColor,
+    YELLOW: 'YELLOW' as ClassificationLevelColor,
+    GREEN: 'GREEN' as ClassificationLevelColor,
+    BLUE: 'BLUE' as ClassificationLevelColor,
+    NAVY: 'NAVY' as ClassificationLevelColor,
+    TEAL: 'TEAL' as ClassificationLevelColor,
+    PURPLE: 'PURPLE' as ClassificationLevelColor,
+    GREY: 'GREY' as ClassificationLevelColor,
+    LIME: 'LIME' as ClassificationLevelColor
 };
 

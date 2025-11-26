@@ -14,12 +14,15 @@
 /**
  * The type of space.
  */
-export type SpaceType = 'global' | 'collaboration' | 'knowledge_base' | 'personal';
+export type SpaceType = 'global' | 'collaboration' | 'knowledge_base' | 'personal' | 'system' | 'onboarding' | 'xflow_sample_space';
 
 export const SpaceType = {
-    Global: 'global' as SpaceType,
-    Collaboration: 'collaboration' as SpaceType,
-    KnowledgeBase: 'knowledge_base' as SpaceType,
-    Personal: 'personal' as SpaceType
+    global: 'global' as SpaceType,
+    collaboration: 'collaboration' as SpaceType,
+    knowledge_base: 'knowledge_base' as SpaceType,
+    personal: 'personal' as SpaceType,
+    system: 'system' as SpaceType,
+    onboarding: 'onboarding' as SpaceType,
+    xflow_sample_space: 'xflow_sample_space' as SpaceType
 };
 

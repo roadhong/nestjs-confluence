@@ -17,15 +17,15 @@
 export type ContentSortOrder = 'created-date' | '-created-date' | 'id' | '-id' | 'modified-date' | '-modified-date' | 'child-position' | '-child-position' | 'title' | '-title';
 
 export const ContentSortOrder = {
-    CreatedDate: 'created-date' as ContentSortOrder,
-    CreatedDate2: '-created-date' as ContentSortOrder,
-    Id: 'id' as ContentSortOrder,
-    Id2: '-id' as ContentSortOrder,
-    ModifiedDate: 'modified-date' as ContentSortOrder,
-    ModifiedDate2: '-modified-date' as ContentSortOrder,
-    ChildPosition: 'child-position' as ContentSortOrder,
-    ChildPosition2: '-child-position' as ContentSortOrder,
-    Title: 'title' as ContentSortOrder,
-    Title2: '-title' as ContentSortOrder
+    created_date: 'created-date' as ContentSortOrder,
+    created_date2: '-created-date' as ContentSortOrder,
+    id: 'id' as ContentSortOrder,
+    id2: '-id' as ContentSortOrder,
+    modified_date: 'modified-date' as ContentSortOrder,
+    modified_date2: '-modified-date' as ContentSortOrder,
+    child_position: 'child-position' as ContentSortOrder,
+    child_position2: '-child-position' as ContentSortOrder,
+    title: 'title' as ContentSortOrder,
+    title2: '-title' as ContentSortOrder
 };
 

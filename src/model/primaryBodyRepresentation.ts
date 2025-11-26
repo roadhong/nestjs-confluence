@@ -17,7 +17,7 @@
 export type PrimaryBodyRepresentation = 'storage' | 'atlas_doc_format';
 
 export const PrimaryBodyRepresentation = {
-    Storage: 'storage' as PrimaryBodyRepresentation,
-    AtlasDocFormat: 'atlas_doc_format' as PrimaryBodyRepresentation
+    storage: 'storage' as PrimaryBodyRepresentation,
+    atlas_doc_format: 'atlas_doc_format' as PrimaryBodyRepresentation
 };
 

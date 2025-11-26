@@ -17,7 +17,7 @@
 export type SpaceDescriptionBodyRepresentation = 'plain' | 'view';
 
 export const SpaceDescriptionBodyRepresentation = {
-    Plain: 'plain' as SpaceDescriptionBodyRepresentation,
-    View: 'view' as SpaceDescriptionBodyRepresentation
+    plain: 'plain' as SpaceDescriptionBodyRepresentation,
+    view: 'view' as SpaceDescriptionBodyRepresentation
 };
 

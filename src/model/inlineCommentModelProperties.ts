@@ -26,13 +26,5 @@ export interface InlineCommentModelProperties {
      * Text that is highlighted.
      */
     inlineOriginalSelection?: string;
-    /**
-     * Deprecated, use `inlineMarkerRef` instead.
-     */
-    'inline-marker-ref'?: string;
-    /**
-     * Deprecated, use `inlineOriginalSelection` instead.
-     */
-    'inline-original-selection'?: string;
 }
 

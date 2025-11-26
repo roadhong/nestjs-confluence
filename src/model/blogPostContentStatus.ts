@@ -17,11 +17,11 @@
 export type BlogPostContentStatus = 'current' | 'draft' | 'historical' | 'trashed' | 'deleted' | 'any';
 
 export const BlogPostContentStatus = {
-    Current: 'current' as BlogPostContentStatus,
-    Draft: 'draft' as BlogPostContentStatus,
-    Historical: 'historical' as BlogPostContentStatus,
-    Trashed: 'trashed' as BlogPostContentStatus,
-    Deleted: 'deleted' as BlogPostContentStatus,
-    Any: 'any' as BlogPostContentStatus
+    current: 'current' as BlogPostContentStatus,
+    draft: 'draft' as BlogPostContentStatus,
+    historical: 'historical' as BlogPostContentStatus,
+    trashed: 'trashed' as BlogPostContentStatus,
+    deleted: 'deleted' as BlogPostContentStatus,
+    any: 'any' as BlogPostContentStatus
 };
 

@@ -19,9 +19,9 @@ export interface SpaceRole {
     id?: string;
     type?: RoleType;
     /**
-     * The display name for the space role.
+     * The name for the space role.
      */
-    displayName?: string;
+    name?: string;
     /**
      * The description for the space role’s usage.
      */

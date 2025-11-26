@@ -17,10 +17,10 @@
 export type ParentContentType = 'page' | 'whiteboard' | 'database' | 'embed' | 'folder';
 
 export const ParentContentType = {
-    Page: 'page' as ParentContentType,
-    Whiteboard: 'whiteboard' as ParentContentType,
-    Database: 'database' as ParentContentType,
-    Embed: 'embed' as ParentContentType,
-    Folder: 'folder' as ParentContentType
+    page: 'page' as ParentContentType,
+    whiteboard: 'whiteboard' as ParentContentType,
+    database: 'database' as ParentContentType,
+    embed: 'embed' as ParentContentType,
+    folder: 'folder' as ParentContentType
 };
 

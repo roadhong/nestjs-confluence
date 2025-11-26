@@ -47,16 +47,16 @@ export class WhiteboardService {
     /**
      * Create whiteboard
      * Creates a whiteboard in the space.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the corresponding space. Permission to create a whiteboard in the space.
-     * @param createWhiteboardRequest 
+     * @param CreateWhiteboardRequest 
      * @param _private The whiteboard will be private. Only the user who creates this whiteboard will have permission to view and edit one.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [createWhiteboardOpts.config] Override http request option.
      */
-    public createWhiteboard(createWhiteboardRequest: CreateWhiteboardRequest, _private?: boolean, createWhiteboardOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateWhiteboard200Response>>;
-    public createWhiteboard(createWhiteboardRequest: CreateWhiteboardRequest, _private?: boolean, createWhiteboardOpts?: { config?: AxiosRequestConfig }): Observable<any> {
-        if (createWhiteboardRequest === null || createWhiteboardRequest === undefined) {
-            throw new Error('Required parameter createWhiteboardRequest was null or undefined when calling createWhiteboard.');
+    public createWhiteboard(CreateWhiteboardRequest: CreateWhiteboardRequest, _private?: boolean, createWhiteboardOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateWhiteboard200Response>>;
+    public createWhiteboard(CreateWhiteboardRequest: CreateWhiteboardRequest, _private?: boolean, createWhiteboardOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (CreateWhiteboardRequest === null || CreateWhiteboardRequest === undefined) {
+            throw new Error('Required parameter CreateWhiteboardRequest was null or undefined when calling createWhiteboard.');
         }
 
         let queryParameters = new URLSearchParams();
@@ -104,7 +104,7 @@ export class WhiteboardService {
                 }
 
                 return this.httpClient.post<CreateWhiteboard200Response>(`${this.basePath}/whiteboards`,
-                    createWhiteboardRequest,
+                    CreateWhiteboardRequest,
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
@@ -176,32 +176,32 @@ export class WhiteboardService {
      * Get whiteboard by id
      * Returns a specific whiteboard.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the whiteboard and its corresponding space.
      * @param id The ID of the whiteboard to be returned
-     * @param includeCollaborators Includes collaborators on the whiteboard.
-     * @param includeDirectChildren Includes direct children of the whiteboard, as defined in the &#x60;ChildrenResponse&#x60; object.
-     * @param includeOperations Includes operations associated with this whiteboard in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeProperties Includes content properties associated with this whiteboard in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_collaborators Includes collaborators on the whiteboard.
+     * @param include_direct_children Includes direct children of the whiteboard, as defined in the &#x60;ChildrenResponse&#x60; object.
+     * @param include_operations Includes operations associated with this whiteboard in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_properties Includes content properties associated with this whiteboard in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getWhiteboardByIdOpts.config] Override http request option.
      */
-    public getWhiteboardById(id: number, includeCollaborators?: boolean, includeDirectChildren?: boolean, includeOperations?: boolean, includeProperties?: boolean, getWhiteboardByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateWhiteboard200Response>>;
-    public getWhiteboardById(id: number, includeCollaborators?: boolean, includeDirectChildren?: boolean, includeOperations?: boolean, includeProperties?: boolean, getWhiteboardByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getWhiteboardById(id: number, include_collaborators?: boolean, include_direct_children?: boolean, include_operations?: boolean, include_properties?: boolean, getWhiteboardByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateWhiteboard200Response>>;
+    public getWhiteboardById(id: number, include_collaborators?: boolean, include_direct_children?: boolean, include_operations?: boolean, include_properties?: boolean, getWhiteboardByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getWhiteboardById.');
         }
 
         let queryParameters = new URLSearchParams();
-        if (includeCollaborators !== undefined && includeCollaborators !== null) {
-            queryParameters.append('include-collaborators', <any>includeCollaborators);
+        if (include_collaborators !== undefined && include_collaborators !== null) {
+            queryParameters.append('include-collaborators', <any>include_collaborators);
         }
-        if (includeDirectChildren !== undefined && includeDirectChildren !== null) {
-            queryParameters.append('include-direct-children', <any>includeDirectChildren);
+        if (include_direct_children !== undefined && include_direct_children !== null) {
+            queryParameters.append('include-direct-children', <any>include_direct_children);
         }
-        if (includeOperations !== undefined && includeOperations !== null) {
-            queryParameters.append('include-operations', <any>includeOperations);
+        if (include_operations !== undefined && include_operations !== null) {
+            queryParameters.append('include-operations', <any>include_operations);
         }
-        if (includeProperties !== undefined && includeProperties !== null) {
-            queryParameters.append('include-properties', <any>includeProperties);
+        if (include_properties !== undefined && include_properties !== null) {
+            queryParameters.append('include-properties', <any>include_properties);
         }
 
         let headers = {...this.defaultHeaders};

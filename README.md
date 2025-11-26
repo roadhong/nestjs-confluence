@@ -167,6 +167,7 @@ export class AppModule {}
 |-----------------------------|--------------------------------------------------------------------------------------------|
 | **AdminKeyService**         | [Admin Key API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-admin-key/) |
 | **AncestorsService**        | [Ancestors API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-ancestors/) |
+| **AppPropertiesService**    | [App Properties API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-app-properties/) |
 | **AttachmentService**       | [Attachment API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-attachment/) |
 | **BlogPostService**         | [Blog Post API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-blog-post/) |
 | **ChildrenService**         | [Children API](https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-children/) |

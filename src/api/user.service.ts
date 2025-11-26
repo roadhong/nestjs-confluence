@@ -49,15 +49,15 @@ export class UserService {
     /**
      * Check site access for a list of emails
      * Returns the list of emails from the input list that do not have access to site.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site (\&#39;Can use\&#39; global permission).
-     * @param checkAccessByEmailRequest 
+     * @param CheckAccessByEmailRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [checkAccessByEmailOpts.config] Override http request option.
      */
-    public checkAccessByEmail(checkAccessByEmailRequest: CheckAccessByEmailRequest, checkAccessByEmailOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CheckAccessByEmail200Response>>;
-    public checkAccessByEmail(checkAccessByEmailRequest: CheckAccessByEmailRequest, checkAccessByEmailOpts?: { config?: AxiosRequestConfig }): Observable<any> {
-        if (checkAccessByEmailRequest === null || checkAccessByEmailRequest === undefined) {
-            throw new Error('Required parameter checkAccessByEmailRequest was null or undefined when calling checkAccessByEmail.');
+    public checkAccessByEmail(CheckAccessByEmailRequest: CheckAccessByEmailRequest, checkAccessByEmailOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CheckAccessByEmail200Response>>;
+    public checkAccessByEmail(CheckAccessByEmailRequest: CheckAccessByEmailRequest, checkAccessByEmailOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (CheckAccessByEmailRequest === null || CheckAccessByEmailRequest === undefined) {
+            throw new Error('Required parameter CheckAccessByEmailRequest was null or undefined when calling checkAccessByEmail.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -100,7 +100,7 @@ export class UserService {
                 }
 
                 return this.httpClient.post<CheckAccessByEmail200Response>(`${this.basePath}/user/access/check-access-by-email`,
-                    checkAccessByEmailRequest,
+                    CheckAccessByEmailRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...checkAccessByEmailOpts?.config,
@@ -113,15 +113,15 @@ export class UserService {
     /**
      * Create bulk user lookup using ids
      * Returns user details for the ids provided in the request body.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site (\&#39;Can use\&#39; global permission). The user must be able to view user profiles in the Confluence site.
-     * @param createBulkUserLookupRequest 
+     * @param CreateBulkUserLookupRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [createBulkUserLookupOpts.config] Override http request option.
      */
-    public createBulkUserLookup(createBulkUserLookupRequest: CreateBulkUserLookupRequest, createBulkUserLookupOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultUser>>;
-    public createBulkUserLookup(createBulkUserLookupRequest: CreateBulkUserLookupRequest, createBulkUserLookupOpts?: { config?: AxiosRequestConfig }): Observable<any> {
-        if (createBulkUserLookupRequest === null || createBulkUserLookupRequest === undefined) {
-            throw new Error('Required parameter createBulkUserLookupRequest was null or undefined when calling createBulkUserLookup.');
+    public createBulkUserLookup(CreateBulkUserLookupRequest: CreateBulkUserLookupRequest, createBulkUserLookupOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultUser>>;
+    public createBulkUserLookup(CreateBulkUserLookupRequest: CreateBulkUserLookupRequest, createBulkUserLookupOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (CreateBulkUserLookupRequest === null || CreateBulkUserLookupRequest === undefined) {
+            throw new Error('Required parameter CreateBulkUserLookupRequest was null or undefined when calling createBulkUserLookup.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -164,7 +164,7 @@ export class UserService {
                 }
 
                 return this.httpClient.post<MultiEntityResultUser>(`${this.basePath}/users-bulk`,
-                    createBulkUserLookupRequest,
+                    CreateBulkUserLookupRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...createBulkUserLookupOpts?.config,
@@ -177,15 +177,15 @@ export class UserService {
     /**
      * Invite a list of emails to the site
      * Invite a list of emails to the site.  Ignores all invalid emails and no action is taken for the emails that already have access to the site.  &lt;b&gt;NOTE:&lt;/b&gt; This API is asynchronous and may take some time to complete.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site (\&#39;Can use\&#39; global permission).
-     * @param checkAccessByEmailRequest 
+     * @param CheckAccessByEmailRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [inviteByEmailOpts.config] Override http request option.
      */
-    public inviteByEmail(checkAccessByEmailRequest: CheckAccessByEmailRequest, inviteByEmailOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
-    public inviteByEmail(checkAccessByEmailRequest: CheckAccessByEmailRequest, inviteByEmailOpts?: { config?: AxiosRequestConfig }): Observable<any> {
-        if (checkAccessByEmailRequest === null || checkAccessByEmailRequest === undefined) {
-            throw new Error('Required parameter checkAccessByEmailRequest was null or undefined when calling inviteByEmail.');
+    public inviteByEmail(CheckAccessByEmailRequest: CheckAccessByEmailRequest, inviteByEmailOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public inviteByEmail(CheckAccessByEmailRequest: CheckAccessByEmailRequest, inviteByEmailOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (CheckAccessByEmailRequest === null || CheckAccessByEmailRequest === undefined) {
+            throw new Error('Required parameter CheckAccessByEmailRequest was null or undefined when calling inviteByEmail.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -227,7 +227,7 @@ export class UserService {
                 }
 
                 return this.httpClient.post<any>(`${this.basePath}/user/access/invite-by-email`,
-                    checkAccessByEmailRequest,
+                    CheckAccessByEmailRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...inviteByEmailOpts?.config,

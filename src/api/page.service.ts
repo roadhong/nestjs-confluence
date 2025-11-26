@@ -53,18 +53,18 @@ export class PageService {
     /**
      * Create page
      * Creates a page in the space.  Pages are created as published by default unless specified as a draft in the status field. If creating a published page, the title must be specified.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the corresponding space. Permission to create a page in the space.
-     * @param createPageRequest 
+     * @param CreatePageRequest 
      * @param embedded Tag the content as embedded and content will be created in NCS.
      * @param _private The page will be private. Only the user who creates this page will have permission to view and edit one.
-     * @param rootLevel The page will be created at the root level of the space (outside the space homepage tree). If true, then a  value may not be supplied for the &#x60;parentId&#x60; body parameter.
+     * @param root_level The page will be created at the root level of the space (outside the space homepage tree). If true, then a  value may not be supplied for the &#x60;parentId&#x60; body parameter.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [createPageOpts.config] Override http request option.
      */
-    public createPage(createPageRequest: CreatePageRequest, embedded?: boolean, _private?: boolean, rootLevel?: boolean, createPageOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreatePage200Response>>;
-    public createPage(createPageRequest: CreatePageRequest, embedded?: boolean, _private?: boolean, rootLevel?: boolean, createPageOpts?: { config?: AxiosRequestConfig }): Observable<any> {
-        if (createPageRequest === null || createPageRequest === undefined) {
-            throw new Error('Required parameter createPageRequest was null or undefined when calling createPage.');
+    public createPage(CreatePageRequest: CreatePageRequest, embedded?: boolean, _private?: boolean, root_level?: boolean, createPageOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreatePage200Response>>;
+    public createPage(CreatePageRequest: CreatePageRequest, embedded?: boolean, _private?: boolean, root_level?: boolean, createPageOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (CreatePageRequest === null || CreatePageRequest === undefined) {
+            throw new Error('Required parameter CreatePageRequest was null or undefined when calling createPage.');
         }
 
         let queryParameters = new URLSearchParams();
@@ -74,8 +74,8 @@ export class PageService {
         if (_private !== undefined && _private !== null) {
             queryParameters.append('private', <any>_private);
         }
-        if (rootLevel !== undefined && rootLevel !== null) {
-            queryParameters.append('root-level', <any>rootLevel);
+        if (root_level !== undefined && root_level !== null) {
+            queryParameters.append('root-level', <any>root_level);
         }
 
         let headers = {...this.defaultHeaders};
@@ -118,7 +118,7 @@ export class PageService {
                 }
 
                 return this.httpClient.post<CreatePage200Response>(`${this.basePath}/pages`,
-                    createPageRequest,
+                    CreatePageRequest,
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
@@ -201,8 +201,8 @@ export class PageService {
      * Get pages for label
      * Returns the pages of specified label. The number of results is limited by the &#x60;limit&#x60; parameter and additional results (if available) will be available through the &#x60;next&#x60; URL present in the &#x60;Link&#x60; response header.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the content of the page and its corresponding space.
      * @param id The ID of the label for which pages should be returned.
-     * @param spaceId Filter the results based on space ids. Multiple space ids can be specified as a comma-separated list.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
+     * @param space_id Filter the results based on space ids. Multiple space ids can be specified as a comma-separated list.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
      * @param sort Used to sort the result by a particular field.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of pages per result to return. If more results exist, use the &#x60;Link&#x60; header to retrieve a relative URL that will return the next set of results.
@@ -210,20 +210,20 @@ export class PageService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getLabelPagesOpts.config] Override http request option.
      */
-    public getLabelPages(id: number, spaceId?: Array<number>, bodyFormat?: PrimaryBodyRepresentation, sort?: PageSortOrder, cursor?: string, limit?: number, getLabelPagesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultPage>>;
-    public getLabelPages(id: number, spaceId?: Array<number>, bodyFormat?: PrimaryBodyRepresentation, sort?: PageSortOrder, cursor?: string, limit?: number, getLabelPagesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getLabelPages(id: number, space_id?: Array<number>, body_format?: PrimaryBodyRepresentation, sort?: PageSortOrder, cursor?: string, limit?: number, getLabelPagesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultPage>>;
+    public getLabelPages(id: number, space_id?: Array<number>, body_format?: PrimaryBodyRepresentation, sort?: PageSortOrder, cursor?: string, limit?: number, getLabelPagesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getLabelPages.');
         }
 
         let queryParameters = new URLSearchParams();
-        if (spaceId) {
-            spaceId.forEach((element) => {
+        if (space_id) {
+            space_id.forEach((element) => {
                 queryParameters.append('space-id', <any>element);
             })
         }
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
         if (sort !== undefined && sort !== null) {
             queryParameters.append('sort', <any>sort);
@@ -284,36 +284,36 @@ export class PageService {
      * Get page by id
      * Returns a specific page.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the page and its corresponding space.
      * @param id The ID of the page to be returned. If you don\&#39;t know the page ID, use Get pages and filter the results.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
-     * @param getDraft Retrieve the draft version of this page.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
+     * @param get_draft Retrieve the draft version of this page.
      * @param status Filter the page being retrieved by its status.
      * @param version Allows you to retrieve a previously published version. Specify the previous version\&#39;s number to retrieve its details.
-     * @param includeLabels Includes labels associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeProperties Includes content properties associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeOperations Includes operations associated with this page in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeLikes Includes likes associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeVersions Includes versions associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeVersion Includes the current version associated with this page in the response. By default this is included and can be omitted by setting the value to &#x60;false&#x60;.
-     * @param includeFavoritedByCurrentUserStatus Includes whether this page has been favorited by the current user.
-     * @param includeWebresources Includes web resources that can be used to render page content on a client.
-     * @param includeCollaborators Includes collaborators on the page.
-     * @param includeDirectChildren Includes direct children of the page, as defined in the &#x60;ChildrenResponse&#x60; object.
+     * @param include_labels Includes labels associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_properties Includes content properties associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_operations Includes operations associated with this page in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_likes Includes likes associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_versions Includes versions associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_version Includes the current version associated with this page in the response. By default this is included and can be omitted by setting the value to &#x60;false&#x60;.
+     * @param include_favorited_by_current_user_status Includes whether this page has been favorited by the current user.
+     * @param include_webresources Includes web resources that can be used to render page content on a client.
+     * @param include_collaborators Includes collaborators on the page.
+     * @param include_direct_children Includes direct children of the page, as defined in the &#x60;ChildrenResponse&#x60; object.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getPageByIdOpts.config] Override http request option.
      */
-    public getPageById(id: number, bodyFormat?: PrimaryBodyRepresentationSingle, getDraft?: boolean, status?: Array<'current' | 'archived' | 'trashed' | 'deleted' | 'historical' | 'draft'>, version?: number, includeLabels?: boolean, includeProperties?: boolean, includeOperations?: boolean, includeLikes?: boolean, includeVersions?: boolean, includeVersion?: boolean, includeFavoritedByCurrentUserStatus?: boolean, includeWebresources?: boolean, includeCollaborators?: boolean, includeDirectChildren?: boolean, getPageByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreatePage200Response>>;
-    public getPageById(id: number, bodyFormat?: PrimaryBodyRepresentationSingle, getDraft?: boolean, status?: Array<'current' | 'archived' | 'trashed' | 'deleted' | 'historical' | 'draft'>, version?: number, includeLabels?: boolean, includeProperties?: boolean, includeOperations?: boolean, includeLikes?: boolean, includeVersions?: boolean, includeVersion?: boolean, includeFavoritedByCurrentUserStatus?: boolean, includeWebresources?: boolean, includeCollaborators?: boolean, includeDirectChildren?: boolean, getPageByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getPageById(id: number, body_format?: PrimaryBodyRepresentationSingle, get_draft?: boolean, status?: Array<'current' | 'archived' | 'trashed' | 'deleted' | 'historical' | 'draft'>, version?: number, include_labels?: boolean, include_properties?: boolean, include_operations?: boolean, include_likes?: boolean, include_versions?: boolean, include_version?: boolean, include_favorited_by_current_user_status?: boolean, include_webresources?: boolean, include_collaborators?: boolean, include_direct_children?: boolean, getPageByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreatePage200Response>>;
+    public getPageById(id: number, body_format?: PrimaryBodyRepresentationSingle, get_draft?: boolean, status?: Array<'current' | 'archived' | 'trashed' | 'deleted' | 'historical' | 'draft'>, version?: number, include_labels?: boolean, include_properties?: boolean, include_operations?: boolean, include_likes?: boolean, include_versions?: boolean, include_version?: boolean, include_favorited_by_current_user_status?: boolean, include_webresources?: boolean, include_collaborators?: boolean, include_direct_children?: boolean, getPageByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getPageById.');
         }
 
         let queryParameters = new URLSearchParams();
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
-        if (getDraft !== undefined && getDraft !== null) {
-            queryParameters.append('get-draft', <any>getDraft);
+        if (get_draft !== undefined && get_draft !== null) {
+            queryParameters.append('get-draft', <any>get_draft);
         }
         if (status) {
             status.forEach((element) => {
@@ -323,35 +323,35 @@ export class PageService {
         if (version !== undefined && version !== null) {
             queryParameters.append('version', <any>version);
         }
-        if (includeLabels !== undefined && includeLabels !== null) {
-            queryParameters.append('include-labels', <any>includeLabels);
+        if (include_labels !== undefined && include_labels !== null) {
+            queryParameters.append('include-labels', <any>include_labels);
         }
-        if (includeProperties !== undefined && includeProperties !== null) {
-            queryParameters.append('include-properties', <any>includeProperties);
+        if (include_properties !== undefined && include_properties !== null) {
+            queryParameters.append('include-properties', <any>include_properties);
         }
-        if (includeOperations !== undefined && includeOperations !== null) {
-            queryParameters.append('include-operations', <any>includeOperations);
+        if (include_operations !== undefined && include_operations !== null) {
+            queryParameters.append('include-operations', <any>include_operations);
         }
-        if (includeLikes !== undefined && includeLikes !== null) {
-            queryParameters.append('include-likes', <any>includeLikes);
+        if (include_likes !== undefined && include_likes !== null) {
+            queryParameters.append('include-likes', <any>include_likes);
         }
-        if (includeVersions !== undefined && includeVersions !== null) {
-            queryParameters.append('include-versions', <any>includeVersions);
+        if (include_versions !== undefined && include_versions !== null) {
+            queryParameters.append('include-versions', <any>include_versions);
         }
-        if (includeVersion !== undefined && includeVersion !== null) {
-            queryParameters.append('include-version', <any>includeVersion);
+        if (include_version !== undefined && include_version !== null) {
+            queryParameters.append('include-version', <any>include_version);
         }
-        if (includeFavoritedByCurrentUserStatus !== undefined && includeFavoritedByCurrentUserStatus !== null) {
-            queryParameters.append('include-favorited-by-current-user-status', <any>includeFavoritedByCurrentUserStatus);
+        if (include_favorited_by_current_user_status !== undefined && include_favorited_by_current_user_status !== null) {
+            queryParameters.append('include-favorited-by-current-user-status', <any>include_favorited_by_current_user_status);
         }
-        if (includeWebresources !== undefined && includeWebresources !== null) {
-            queryParameters.append('include-webresources', <any>includeWebresources);
+        if (include_webresources !== undefined && include_webresources !== null) {
+            queryParameters.append('include-webresources', <any>include_webresources);
         }
-        if (includeCollaborators !== undefined && includeCollaborators !== null) {
-            queryParameters.append('include-collaborators', <any>includeCollaborators);
+        if (include_collaborators !== undefined && include_collaborators !== null) {
+            queryParameters.append('include-collaborators', <any>include_collaborators);
         }
-        if (includeDirectChildren !== undefined && includeDirectChildren !== null) {
-            queryParameters.append('include-direct-children', <any>includeDirectChildren);
+        if (include_direct_children !== undefined && include_direct_children !== null) {
+            queryParameters.append('include-direct-children', <any>include_direct_children);
         }
 
         let headers = {...this.defaultHeaders};
@@ -403,11 +403,11 @@ export class PageService {
      * Get pages
      * Returns all pages. The number of results is limited by the &#x60;limit&#x60; parameter and additional results (if available) will be available through the &#x60;next&#x60; URL present in the &#x60;Link&#x60; response header.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site (\&#39;Can use\&#39; global permission). Only pages that the user has permission to view will be returned.
      * @param id Filter the results based on page ids. Multiple page ids can be specified as a comma-separated list.
-     * @param spaceId Filter the results based on space ids. Multiple space ids can be specified as a comma-separated list.
+     * @param space_id Filter the results based on space ids. Multiple space ids can be specified as a comma-separated list.
      * @param sort Used to sort the result by a particular field.
      * @param status Filter the results to pages based on their status. By default, &#x60;current&#x60; and &#x60;archived&#x60; are used.
      * @param title Filter the results to pages based on their title.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
      * @param subtype Filter the results to pages based on their subtype.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of pages per result to return. If more results exist, use the &#x60;Link&#x60; header to retrieve a relative URL that will return the next set of results.
@@ -415,16 +415,16 @@ export class PageService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getPagesOpts.config] Override http request option.
      */
-    public getPages(id?: Array<number>, spaceId?: Array<number>, sort?: PageSortOrder, status?: Array<'current' | 'archived' | 'deleted' | 'trashed'>, title?: string, bodyFormat?: PrimaryBodyRepresentation, subtype?: 'live' | 'page', cursor?: string, limit?: number, getPagesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultPage>>;
-    public getPages(id?: Array<number>, spaceId?: Array<number>, sort?: PageSortOrder, status?: Array<'current' | 'archived' | 'deleted' | 'trashed'>, title?: string, bodyFormat?: PrimaryBodyRepresentation, subtype?: 'live' | 'page', cursor?: string, limit?: number, getPagesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getPages(id?: Array<number>, space_id?: Array<number>, sort?: PageSortOrder, status?: Array<'current' | 'archived' | 'deleted' | 'trashed'>, title?: string, body_format?: PrimaryBodyRepresentation, subtype?: 'live' | 'page', cursor?: string, limit?: number, getPagesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultPage>>;
+    public getPages(id?: Array<number>, space_id?: Array<number>, sort?: PageSortOrder, status?: Array<'current' | 'archived' | 'deleted' | 'trashed'>, title?: string, body_format?: PrimaryBodyRepresentation, subtype?: 'live' | 'page', cursor?: string, limit?: number, getPagesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (id) {
             id.forEach((element) => {
                 queryParameters.append('id', <any>element);
             })
         }
-        if (spaceId) {
-            spaceId.forEach((element) => {
+        if (space_id) {
+            space_id.forEach((element) => {
                 queryParameters.append('space-id', <any>element);
             })
         }
@@ -439,8 +439,8 @@ export class PageService {
         if (title !== undefined && title !== null) {
             queryParameters.append('title', <any>title);
         }
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
         if (subtype !== undefined && subtype !== null) {
             queryParameters.append('subtype', <any>subtype);
@@ -505,15 +505,15 @@ export class PageService {
      * @param sort Used to sort the result by a particular field.
      * @param status Filter the results to pages based on their status. By default, &#x60;current&#x60; and &#x60;archived&#x60; are used.
      * @param title Filter the results to pages based on their title.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of pages per result to return. If more results exist, use the &#x60;Link&#x60; header to retrieve a relative URL that will return the next set of results.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getPagesInSpaceOpts.config] Override http request option.
      */
-    public getPagesInSpace(id: number, depth?: 'all' | 'root', sort?: PageSortOrder, status?: Array<'current' | 'archived' | 'deleted' | 'trashed'>, title?: string, bodyFormat?: PrimaryBodyRepresentation, cursor?: string, limit?: number, getPagesInSpaceOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultPage>>;
-    public getPagesInSpace(id: number, depth?: 'all' | 'root', sort?: PageSortOrder, status?: Array<'current' | 'archived' | 'deleted' | 'trashed'>, title?: string, bodyFormat?: PrimaryBodyRepresentation, cursor?: string, limit?: number, getPagesInSpaceOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getPagesInSpace(id: number, depth?: 'all' | 'root', sort?: PageSortOrder, status?: Array<'current' | 'archived' | 'deleted' | 'trashed'>, title?: string, body_format?: PrimaryBodyRepresentation, cursor?: string, limit?: number, getPagesInSpaceOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultPage>>;
+    public getPagesInSpace(id: number, depth?: 'all' | 'root', sort?: PageSortOrder, status?: Array<'current' | 'archived' | 'deleted' | 'trashed'>, title?: string, body_format?: PrimaryBodyRepresentation, cursor?: string, limit?: number, getPagesInSpaceOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getPagesInSpace.');
         }
@@ -533,8 +533,8 @@ export class PageService {
         if (title !== undefined && title !== null) {
             queryParameters.append('title', <any>title);
         }
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
         if (cursor !== undefined && cursor !== null) {
             queryParameters.append('cursor', <any>cursor);
@@ -592,19 +592,19 @@ export class PageService {
      * Update page
      * Update a page by id.  When the \&quot;current\&quot; version is updated, the provided body content is considered as the latest version. This latest body content will be attempted to be merged into the draft version through a content reconciliation algorithm. If two versions are significantly diverged,  the latest provided content may entirely override what was previously in the draft.   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the page and its corresponding space. Permission to update pages in the space.
      * @param id The ID of the page to be updated. If you don\&#39;t know the page ID, use Get Pages and filter the results.
-     * @param updatePageRequest 
+     * @param UpdatePageRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updatePageOpts.config] Override http request option.
      */
-    public updatePage(id: number, updatePageRequest: UpdatePageRequest, updatePageOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreatePage200Response>>;
-    public updatePage(id: number, updatePageRequest: UpdatePageRequest, updatePageOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public updatePage(id: number, UpdatePageRequest: UpdatePageRequest, updatePageOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreatePage200Response>>;
+    public updatePage(id: number, UpdatePageRequest: UpdatePageRequest, updatePageOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updatePage.');
         }
 
-        if (updatePageRequest === null || updatePageRequest === undefined) {
-            throw new Error('Required parameter updatePageRequest was null or undefined when calling updatePage.');
+        if (UpdatePageRequest === null || UpdatePageRequest === undefined) {
+            throw new Error('Required parameter UpdatePageRequest was null or undefined when calling updatePage.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -647,7 +647,7 @@ export class PageService {
                 }
 
                 return this.httpClient.put<CreatePage200Response>(`${this.basePath}/pages/${encodeURIComponent(String(id))}`,
-                    updatePageRequest,
+                    UpdatePageRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...updatePageOpts?.config,
@@ -661,19 +661,19 @@ export class PageService {
      * Update page title
      * Updates the title of a specified page.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the page and its corresponding space. Permission to update pages in the space.
      * @param id The ID of the page to be updated. If you don\&#39;t know the page ID, use Get Pages and filter the results
-     * @param updatePageTitleRequest 
+     * @param UpdatePageTitleRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updatePageTitleOpts.config] Override http request option.
      */
-    public updatePageTitle(id: number, updatePageTitleRequest: UpdatePageTitleRequest, updatePageTitleOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreatePage200Response>>;
-    public updatePageTitle(id: number, updatePageTitleRequest: UpdatePageTitleRequest, updatePageTitleOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public updatePageTitle(id: number, UpdatePageTitleRequest: UpdatePageTitleRequest, updatePageTitleOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreatePage200Response>>;
+    public updatePageTitle(id: number, UpdatePageTitleRequest: UpdatePageTitleRequest, updatePageTitleOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updatePageTitle.');
         }
 
-        if (updatePageTitleRequest === null || updatePageTitleRequest === undefined) {
-            throw new Error('Required parameter updatePageTitleRequest was null or undefined when calling updatePageTitle.');
+        if (UpdatePageTitleRequest === null || UpdatePageTitleRequest === undefined) {
+            throw new Error('Required parameter UpdatePageTitleRequest was null or undefined when calling updatePageTitle.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -716,7 +716,7 @@ export class PageService {
                 }
 
                 return this.httpClient.put<CreatePage200Response>(`${this.basePath}/pages/${encodeURIComponent(String(id))}/title`,
-                    updatePageTitleRequest,
+                    UpdatePageTitleRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...updatePageTitleOpts?.config,

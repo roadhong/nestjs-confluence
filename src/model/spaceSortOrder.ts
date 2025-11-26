@@ -17,11 +17,11 @@
 export type SpaceSortOrder = 'id' | '-id' | 'key' | '-key' | 'name' | '-name';
 
 export const SpaceSortOrder = {
-    Id: 'id' as SpaceSortOrder,
-    Id2: '-id' as SpaceSortOrder,
-    Key: 'key' as SpaceSortOrder,
-    Key2: '-key' as SpaceSortOrder,
-    Name: 'name' as SpaceSortOrder,
-    Name2: '-name' as SpaceSortOrder
+    id: 'id' as SpaceSortOrder,
+    id2: '-id' as SpaceSortOrder,
+    key: 'key' as SpaceSortOrder,
+    key2: '-key' as SpaceSortOrder,
+    name: 'name' as SpaceSortOrder,
+    name2: '-name' as SpaceSortOrder
 };
 

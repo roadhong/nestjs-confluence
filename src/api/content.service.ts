@@ -47,15 +47,15 @@ export class ContentService {
     /**
      * Convert content ids to content types
      * Converts a list of content ids into their associated content types. This is useful for users migrating from v1 to v2 who may have stored just content ids without their associated type. This will return types as they should be used in v2. Notably, this will return &#x60;inline-comment&#x60; for inline comments and &#x60;footer-comment&#x60; for footer comments, which is distinct from them both being represented by &#x60;comment&#x60; in v1.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the requested content. Any content that the user does not have permission to view or does not exist will map to &#x60;null&#x60; in the response.
-     * @param convertContentIdsToContentTypesRequest 
+     * @param ConvertContentIdsToContentTypesRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [convertContentIdsToContentTypesOpts.config] Override http request option.
      */
-    public convertContentIdsToContentTypes(convertContentIdsToContentTypesRequest: ConvertContentIdsToContentTypesRequest, convertContentIdsToContentTypesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ContentIdToContentTypeResponse>>;
-    public convertContentIdsToContentTypes(convertContentIdsToContentTypesRequest: ConvertContentIdsToContentTypesRequest, convertContentIdsToContentTypesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
-        if (convertContentIdsToContentTypesRequest === null || convertContentIdsToContentTypesRequest === undefined) {
-            throw new Error('Required parameter convertContentIdsToContentTypesRequest was null or undefined when calling convertContentIdsToContentTypes.');
+    public convertContentIdsToContentTypes(ConvertContentIdsToContentTypesRequest: ConvertContentIdsToContentTypesRequest, convertContentIdsToContentTypesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ContentIdToContentTypeResponse>>;
+    public convertContentIdsToContentTypes(ConvertContentIdsToContentTypesRequest: ConvertContentIdsToContentTypesRequest, convertContentIdsToContentTypesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (ConvertContentIdsToContentTypesRequest === null || ConvertContentIdsToContentTypesRequest === undefined) {
+            throw new Error('Required parameter ConvertContentIdsToContentTypesRequest was null or undefined when calling convertContentIdsToContentTypes.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -98,7 +98,7 @@ export class ContentService {
                 }
 
                 return this.httpClient.post<ContentIdToContentTypeResponse>(`${this.basePath}/content/convert-ids-to-types`,
-                    convertContentIdsToContentTypesRequest,
+                    ConvertContentIdsToContentTypesRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...convertContentIdsToContentTypesOpts?.config,

@@ -17,11 +17,11 @@
 export type ChildCustomContentSortOrder = 'created-date' | '-created-date' | 'id' | '-id' | 'modified-date' | '-modified-date';
 
 export const ChildCustomContentSortOrder = {
-    CreatedDate: 'created-date' as ChildCustomContentSortOrder,
-    CreatedDate2: '-created-date' as ChildCustomContentSortOrder,
-    Id: 'id' as ChildCustomContentSortOrder,
-    Id2: '-id' as ChildCustomContentSortOrder,
-    ModifiedDate: 'modified-date' as ChildCustomContentSortOrder,
-    ModifiedDate2: '-modified-date' as ChildCustomContentSortOrder
+    created_date: 'created-date' as ChildCustomContentSortOrder,
+    created_date2: '-created-date' as ChildCustomContentSortOrder,
+    id: 'id' as ChildCustomContentSortOrder,
+    id2: '-id' as ChildCustomContentSortOrder,
+    modified_date: 'modified-date' as ChildCustomContentSortOrder,
+    modified_date2: '-modified-date' as ChildCustomContentSortOrder
 };
 

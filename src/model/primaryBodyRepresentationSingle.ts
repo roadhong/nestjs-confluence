@@ -17,12 +17,12 @@
 export type PrimaryBodyRepresentationSingle = 'storage' | 'atlas_doc_format' | 'view' | 'export_view' | 'anonymous_export_view' | 'styled_view' | 'editor';
 
 export const PrimaryBodyRepresentationSingle = {
-    Storage: 'storage' as PrimaryBodyRepresentationSingle,
-    AtlasDocFormat: 'atlas_doc_format' as PrimaryBodyRepresentationSingle,
-    View: 'view' as PrimaryBodyRepresentationSingle,
-    ExportView: 'export_view' as PrimaryBodyRepresentationSingle,
-    AnonymousExportView: 'anonymous_export_view' as PrimaryBodyRepresentationSingle,
-    StyledView: 'styled_view' as PrimaryBodyRepresentationSingle,
-    Editor: 'editor' as PrimaryBodyRepresentationSingle
+    storage: 'storage' as PrimaryBodyRepresentationSingle,
+    atlas_doc_format: 'atlas_doc_format' as PrimaryBodyRepresentationSingle,
+    view: 'view' as PrimaryBodyRepresentationSingle,
+    export_view: 'export_view' as PrimaryBodyRepresentationSingle,
+    anonymous_export_view: 'anonymous_export_view' as PrimaryBodyRepresentationSingle,
+    styled_view: 'styled_view' as PrimaryBodyRepresentationSingle,
+    editor: 'editor' as PrimaryBodyRepresentationSingle
 };
 

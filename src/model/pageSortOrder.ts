@@ -17,13 +17,13 @@
 export type PageSortOrder = 'id' | '-id' | 'created-date' | '-created-date' | 'modified-date' | '-modified-date' | 'title' | '-title';
 
 export const PageSortOrder = {
-    Id: 'id' as PageSortOrder,
-    Id2: '-id' as PageSortOrder,
-    CreatedDate: 'created-date' as PageSortOrder,
-    CreatedDate2: '-created-date' as PageSortOrder,
-    ModifiedDate: 'modified-date' as PageSortOrder,
-    ModifiedDate2: '-modified-date' as PageSortOrder,
-    Title: 'title' as PageSortOrder,
-    Title2: '-title' as PageSortOrder
+    id: 'id' as PageSortOrder,
+    id2: '-id' as PageSortOrder,
+    created_date: 'created-date' as PageSortOrder,
+    created_date2: '-created-date' as PageSortOrder,
+    modified_date: 'modified-date' as PageSortOrder,
+    modified_date2: '-modified-date' as PageSortOrder,
+    title: 'title' as PageSortOrder,
+    title2: '-title' as PageSortOrder
 };
 

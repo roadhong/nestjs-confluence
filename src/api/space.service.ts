@@ -50,16 +50,16 @@ export class SpaceService {
 
     /**
      * Create space
-     * Creates a Space as specified in the payload.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to create spaces.
-     * @param createSpaceRequest 
+     * Creates a Space as specified in the payload.  Available as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550).   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to create spaces.
+     * @param CreateSpaceRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [createSpaceOpts.config] Override http request option.
      */
-    public createSpace(createSpaceRequest: CreateSpaceRequest, createSpaceOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateSpace201Response>>;
-    public createSpace(createSpaceRequest: CreateSpaceRequest, createSpaceOpts?: { config?: AxiosRequestConfig }): Observable<any> {
-        if (createSpaceRequest === null || createSpaceRequest === undefined) {
-            throw new Error('Required parameter createSpaceRequest was null or undefined when calling createSpace.');
+    public createSpace(CreateSpaceRequest: CreateSpaceRequest, createSpaceOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateSpace201Response>>;
+    public createSpace(CreateSpaceRequest: CreateSpaceRequest, createSpaceOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (CreateSpaceRequest === null || CreateSpaceRequest === undefined) {
+            throw new Error('Required parameter CreateSpaceRequest was null or undefined when calling createSpace.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -102,7 +102,7 @@ export class SpaceService {
                 }
 
                 return this.httpClient.post<CreateSpace201Response>(`${this.basePath}/spaces`,
-                    createSpaceRequest,
+                    CreateSpaceRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...createSpaceOpts?.config,
@@ -116,44 +116,44 @@ export class SpaceService {
      * Get space by id
      * Returns a specific space.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the space.
      * @param id The ID of the space to be returned.
-     * @param descriptionFormat The content format type to be returned in the &#x60;description&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;description&#x60; field.
-     * @param includeIcon If the icon for the space should be fetched or not.
-     * @param includeOperations Includes operations associated with this space in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeProperties Includes space properties associated with this space in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includePermissions Includes space permissions associated with this space in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeRoleAssignments Includes role assignments associated with this space in the response. This parameter is only accepted for EAP sites. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeLabels Includes labels associated with this space in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param description_format The content format type to be returned in the &#x60;description&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;description&#x60; field.
+     * @param include_icon If the icon for the space should be fetched or not.
+     * @param include_operations Includes operations associated with this space in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_properties Includes space properties associated with this space in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_permissions Includes space permissions associated with this space in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_role_assignments Includes role assignments associated with this space in the response. This parameter is only accepted for EAP sites. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_labels Includes labels associated with this space in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getSpaceByIdOpts.config] Override http request option.
      */
-    public getSpaceById(id: number, descriptionFormat?: SpaceDescriptionBodyRepresentation, includeIcon?: boolean, includeOperations?: boolean, includeProperties?: boolean, includePermissions?: boolean, includeRoleAssignments?: boolean, includeLabels?: boolean, getSpaceByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GetSpaceById200Response>>;
-    public getSpaceById(id: number, descriptionFormat?: SpaceDescriptionBodyRepresentation, includeIcon?: boolean, includeOperations?: boolean, includeProperties?: boolean, includePermissions?: boolean, includeRoleAssignments?: boolean, includeLabels?: boolean, getSpaceByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getSpaceById(id: number, description_format?: SpaceDescriptionBodyRepresentation, include_icon?: boolean, include_operations?: boolean, include_properties?: boolean, include_permissions?: boolean, include_role_assignments?: boolean, include_labels?: boolean, getSpaceByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GetSpaceById200Response>>;
+    public getSpaceById(id: number, description_format?: SpaceDescriptionBodyRepresentation, include_icon?: boolean, include_operations?: boolean, include_properties?: boolean, include_permissions?: boolean, include_role_assignments?: boolean, include_labels?: boolean, getSpaceByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getSpaceById.');
         }
 
         let queryParameters = new URLSearchParams();
-        if (descriptionFormat !== undefined && descriptionFormat !== null) {
-            queryParameters.append('description-format', <any>descriptionFormat);
+        if (description_format !== undefined && description_format !== null) {
+            queryParameters.append('description-format', <any>description_format);
         }
-        if (includeIcon !== undefined && includeIcon !== null) {
-            queryParameters.append('include-icon', <any>includeIcon);
+        if (include_icon !== undefined && include_icon !== null) {
+            queryParameters.append('include-icon', <any>include_icon);
         }
-        if (includeOperations !== undefined && includeOperations !== null) {
-            queryParameters.append('include-operations', <any>includeOperations);
+        if (include_operations !== undefined && include_operations !== null) {
+            queryParameters.append('include-operations', <any>include_operations);
         }
-        if (includeProperties !== undefined && includeProperties !== null) {
-            queryParameters.append('include-properties', <any>includeProperties);
+        if (include_properties !== undefined && include_properties !== null) {
+            queryParameters.append('include-properties', <any>include_properties);
         }
-        if (includePermissions !== undefined && includePermissions !== null) {
-            queryParameters.append('include-permissions', <any>includePermissions);
+        if (include_permissions !== undefined && include_permissions !== null) {
+            queryParameters.append('include-permissions', <any>include_permissions);
         }
-        if (includeRoleAssignments !== undefined && includeRoleAssignments !== null) {
-            queryParameters.append('include-role-assignments', <any>includeRoleAssignments);
+        if (include_role_assignments !== undefined && include_role_assignments !== null) {
+            queryParameters.append('include-role-assignments', <any>include_role_assignments);
         }
-        if (includeLabels !== undefined && includeLabels !== null) {
-            queryParameters.append('include-labels', <any>includeLabels);
+        if (include_labels !== undefined && include_labels !== null) {
+            queryParameters.append('include-labels', <any>include_labels);
         }
 
         let headers = {...this.defaultHeaders};
@@ -209,19 +209,19 @@ export class SpaceService {
      * @param type Filter the results to spaces based on their type.
      * @param status Filter the results to spaces based on their status.
      * @param labels Filter the results to spaces based on their labels. Multiple labels can be specified as a comma-separated list.
-     * @param favoritedBy Filter the results to spaces favorited by the user with the specified account ID.
-     * @param notFavoritedBy Filter the results to spaces NOT favorited by the user with the specified account ID.
+     * @param favorited_by Filter the results to spaces favorited by the user with the specified account ID.
+     * @param not_favorited_by Filter the results to spaces NOT favorited by the user with the specified account ID.
      * @param sort Used to sort the result by a particular field.
-     * @param descriptionFormat The content format type to be returned in the &#x60;description&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;description&#x60; field.
-     * @param includeIcon If the icon for the space should be fetched or not.
+     * @param description_format The content format type to be returned in the &#x60;description&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;description&#x60; field.
+     * @param include_icon If the icon for the space should be fetched or not.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of spaces per result to return. If more results exist, use the &#x60;Link&#x60; response header to retrieve a relative URL that will return the next set of results.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getSpacesOpts.config] Override http request option.
      */
-    public getSpaces(ids?: Array<number>, keys?: Array<string>, type?: 'global' | 'collaboration' | 'knowledge_base' | 'personal', status?: 'current' | 'archived', labels?: Array<string>, favoritedBy?: string, notFavoritedBy?: string, sort?: SpaceSortOrder, descriptionFormat?: SpaceDescriptionBodyRepresentation, includeIcon?: boolean, cursor?: string, limit?: number, getSpacesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultSpace>>;
-    public getSpaces(ids?: Array<number>, keys?: Array<string>, type?: 'global' | 'collaboration' | 'knowledge_base' | 'personal', status?: 'current' | 'archived', labels?: Array<string>, favoritedBy?: string, notFavoritedBy?: string, sort?: SpaceSortOrder, descriptionFormat?: SpaceDescriptionBodyRepresentation, includeIcon?: boolean, cursor?: string, limit?: number, getSpacesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getSpaces(ids?: Array<number>, keys?: Array<string>, type?: 'global' | 'collaboration' | 'knowledge_base' | 'personal' | 'system' | 'onboarding' | 'xflow_sample_space', status?: 'current' | 'archived', labels?: Array<string>, favorited_by?: string, not_favorited_by?: string, sort?: SpaceSortOrder, description_format?: SpaceDescriptionBodyRepresentation, include_icon?: boolean, cursor?: string, limit?: number, getSpacesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultSpace>>;
+    public getSpaces(ids?: Array<number>, keys?: Array<string>, type?: 'global' | 'collaboration' | 'knowledge_base' | 'personal' | 'system' | 'onboarding' | 'xflow_sample_space', status?: 'current' | 'archived', labels?: Array<string>, favorited_by?: string, not_favorited_by?: string, sort?: SpaceSortOrder, description_format?: SpaceDescriptionBodyRepresentation, include_icon?: boolean, cursor?: string, limit?: number, getSpacesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (ids) {
             ids.forEach((element) => {
@@ -244,20 +244,20 @@ export class SpaceService {
                 queryParameters.append('labels', <any>element);
             })
         }
-        if (favoritedBy !== undefined && favoritedBy !== null) {
-            queryParameters.append('favorited-by', <any>favoritedBy);
+        if (favorited_by !== undefined && favorited_by !== null) {
+            queryParameters.append('favorited-by', <any>favorited_by);
         }
-        if (notFavoritedBy !== undefined && notFavoritedBy !== null) {
-            queryParameters.append('not-favorited-by', <any>notFavoritedBy);
+        if (not_favorited_by !== undefined && not_favorited_by !== null) {
+            queryParameters.append('not-favorited-by', <any>not_favorited_by);
         }
         if (sort !== undefined && sort !== null) {
             queryParameters.append('sort', <any>sort);
         }
-        if (descriptionFormat !== undefined && descriptionFormat !== null) {
-            queryParameters.append('description-format', <any>descriptionFormat);
+        if (description_format !== undefined && description_format !== null) {
+            queryParameters.append('description-format', <any>description_format);
         }
-        if (includeIcon !== undefined && includeIcon !== null) {
-            queryParameters.append('include-icon', <any>includeIcon);
+        if (include_icon !== undefined && include_icon !== null) {
+            queryParameters.append('include-icon', <any>include_icon);
         }
         if (cursor !== undefined && cursor !== null) {
             queryParameters.append('cursor', <any>cursor);

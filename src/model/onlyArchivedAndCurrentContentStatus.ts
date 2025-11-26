@@ -17,7 +17,7 @@
 export type OnlyArchivedAndCurrentContentStatus = 'current' | 'archived';
 
 export const OnlyArchivedAndCurrentContentStatus = {
-    Current: 'current' as OnlyArchivedAndCurrentContentStatus,
-    Archived: 'archived' as OnlyArchivedAndCurrentContentStatus
+    current: 'current' as OnlyArchivedAndCurrentContentStatus,
+    archived: 'archived' as OnlyArchivedAndCurrentContentStatus
 };
 

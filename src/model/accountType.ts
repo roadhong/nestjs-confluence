@@ -17,9 +17,9 @@
 export type AccountType = 'atlassian' | 'app' | 'customer' | 'unknown';
 
 export const AccountType = {
-    Atlassian: 'atlassian' as AccountType,
-    App: 'app' as AccountType,
-    Customer: 'customer' as AccountType,
-    Unknown: 'unknown' as AccountType
+    atlassian: 'atlassian' as AccountType,
+    app: 'app' as AccountType,
+    customer: 'customer' as AccountType,
+    unknown: 'unknown' as AccountType
 };
 

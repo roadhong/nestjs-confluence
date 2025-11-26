@@ -17,9 +17,9 @@
 export type AttachmentSortOrder = 'created-date' | '-created-date' | 'modified-date' | '-modified-date';
 
 export const AttachmentSortOrder = {
-    CreatedDate: 'created-date' as AttachmentSortOrder,
-    CreatedDate2: '-created-date' as AttachmentSortOrder,
-    ModifiedDate: 'modified-date' as AttachmentSortOrder,
-    ModifiedDate2: '-modified-date' as AttachmentSortOrder
+    created_date: 'created-date' as AttachmentSortOrder,
+    created_date2: '-created-date' as AttachmentSortOrder,
+    modified_date: 'modified-date' as AttachmentSortOrder,
+    modified_date2: '-modified-date' as AttachmentSortOrder
 };
 

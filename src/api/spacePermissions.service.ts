@@ -46,7 +46,7 @@ export class SpacePermissionsService {
 
     /**
      * Get available space permissions
-     * Retrieves the available space permissions.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site.
+     * Retrieves the available space permissions.  Available as part of the [Role-Based Access Controls Beta](https://community.atlassian.com/forums/Confluence-articles/Beta-Simplify-space-access-in-Confluence-with-roles/ba-p/3044550).   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of space permissions to return. If more results exist, use the &#x60;Link&#x60; response header to retrieve a relative URL that will return the next set of results.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.

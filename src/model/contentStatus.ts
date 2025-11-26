@@ -17,12 +17,12 @@
 export type ContentStatus = 'current' | 'draft' | 'archived' | 'historical' | 'trashed' | 'deleted' | 'any';
 
 export const ContentStatus = {
-    Current: 'current' as ContentStatus,
-    Draft: 'draft' as ContentStatus,
-    Archived: 'archived' as ContentStatus,
-    Historical: 'historical' as ContentStatus,
-    Trashed: 'trashed' as ContentStatus,
-    Deleted: 'deleted' as ContentStatus,
-    Any: 'any' as ContentStatus
+    current: 'current' as ContentStatus,
+    draft: 'draft' as ContentStatus,
+    archived: 'archived' as ContentStatus,
+    historical: 'historical' as ContentStatus,
+    trashed: 'trashed' as ContentStatus,
+    deleted: 'deleted' as ContentStatus,
+    any: 'any' as ContentStatus
 };
 

@@ -24,9 +24,9 @@ export interface CommentBodyWrite {
 export namespace CommentBodyWrite {
     export type RepresentationEnum = 'storage' | 'atlas_doc_format' | 'wiki';
     export const RepresentationEnum = {
-        Storage: 'storage' as RepresentationEnum,
-        AtlasDocFormat: 'atlas_doc_format' as RepresentationEnum,
-        Wiki: 'wiki' as RepresentationEnum
+        storage: 'storage' as RepresentationEnum,
+        atlas_doc_format: 'atlas_doc_format' as RepresentationEnum,
+        wiki: 'wiki' as RepresentationEnum
     };
 }
 

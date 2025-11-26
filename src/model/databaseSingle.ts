@@ -50,6 +50,10 @@ export interface DatabaseSingle {
      * Date and time when the database was created. In format \"YYYY-MM-DDTHH:mm:ss.sssZ\".
      */
     createdAt?: string;
+    /**
+     * ID of the space the database is in.
+     */
+    spaceId?: string;
     version?: Version;
     _links?: DatabaseLinks;
 }

@@ -17,11 +17,11 @@
 export type CustomContentBodyRepresentationSingle = 'raw' | 'storage' | 'atlas_doc_format' | 'view' | 'export_view' | 'anonymous_export_view';
 
 export const CustomContentBodyRepresentationSingle = {
-    Raw: 'raw' as CustomContentBodyRepresentationSingle,
-    Storage: 'storage' as CustomContentBodyRepresentationSingle,
-    AtlasDocFormat: 'atlas_doc_format' as CustomContentBodyRepresentationSingle,
-    View: 'view' as CustomContentBodyRepresentationSingle,
-    ExportView: 'export_view' as CustomContentBodyRepresentationSingle,
-    AnonymousExportView: 'anonymous_export_view' as CustomContentBodyRepresentationSingle
+    raw: 'raw' as CustomContentBodyRepresentationSingle,
+    storage: 'storage' as CustomContentBodyRepresentationSingle,
+    atlas_doc_format: 'atlas_doc_format' as CustomContentBodyRepresentationSingle,
+    view: 'view' as CustomContentBodyRepresentationSingle,
+    export_view: 'export_view' as CustomContentBodyRepresentationSingle,
+    anonymous_export_view: 'anonymous_export_view' as CustomContentBodyRepresentationSingle
 };
 

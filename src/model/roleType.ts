@@ -17,7 +17,7 @@
 export type RoleType = 'SYSTEM' | 'CUSTOM';
 
 export const RoleType = {
-    System: 'SYSTEM' as RoleType,
-    Custom: 'CUSTOM' as RoleType
+    SYSTEM: 'SYSTEM' as RoleType,
+    CUSTOM: 'CUSTOM' as RoleType
 };
 

@@ -38,12 +38,12 @@ export interface CreatePageRequest {
 export namespace CreatePageRequest {
     export type StatusEnum = 'current' | 'draft';
     export const StatusEnum = {
-        Current: 'current' as StatusEnum,
-        Draft: 'draft' as StatusEnum
+        current: 'current' as StatusEnum,
+        draft: 'draft' as StatusEnum
     };
     export type SubtypeEnum = 'live';
     export const SubtypeEnum = {
-        Live: 'live' as SubtypeEnum
+        live: 'live' as SubtypeEnum
     };
 }
 

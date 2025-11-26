@@ -17,7 +17,7 @@
 export type SpaceStatus = 'current' | 'archived';
 
 export const SpaceStatus = {
-    Current: 'current' as SpaceStatus,
-    Archived: 'archived' as SpaceStatus
+    current: 'current' as SpaceStatus,
+    archived: 'archived' as SpaceStatus
 };
 

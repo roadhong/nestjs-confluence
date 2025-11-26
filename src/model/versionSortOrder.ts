@@ -17,7 +17,7 @@
 export type VersionSortOrder = 'modified-date' | '-modified-date';
 
 export const VersionSortOrder = {
-    ModifiedDate: 'modified-date' as VersionSortOrder,
-    ModifiedDate2: '-modified-date' as VersionSortOrder
+    modified_date: 'modified-date' as VersionSortOrder,
+    modified_date2: '-modified-date' as VersionSortOrder
 };
 

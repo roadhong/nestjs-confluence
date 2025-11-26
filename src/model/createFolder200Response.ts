@@ -50,6 +50,10 @@ export interface CreateFolder200Response {
      * Date and time when the folder was created. In format \"YYYY-MM-DDTHH:mm:ss.sssZ\".
      */
     createdAt?: string;
+    /**
+     * ID of the space the folder is in.
+     */
+    spaceId?: string;
     version?: Version;
     _links?: GetAttachmentById200ResponseAllOfLinks;
 }

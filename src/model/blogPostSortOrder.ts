@@ -17,11 +17,11 @@
 export type BlogPostSortOrder = 'id' | '-id' | 'created-date' | '-created-date' | 'modified-date' | '-modified-date';
 
 export const BlogPostSortOrder = {
-    Id: 'id' as BlogPostSortOrder,
-    Id2: '-id' as BlogPostSortOrder,
-    CreatedDate: 'created-date' as BlogPostSortOrder,
-    CreatedDate2: '-created-date' as BlogPostSortOrder,
-    ModifiedDate: 'modified-date' as BlogPostSortOrder,
-    ModifiedDate2: '-modified-date' as BlogPostSortOrder
+    id: 'id' as BlogPostSortOrder,
+    id2: '-id' as BlogPostSortOrder,
+    created_date: 'created-date' as BlogPostSortOrder,
+    created_date2: '-created-date' as BlogPostSortOrder,
+    modified_date: 'modified-date' as BlogPostSortOrder,
+    modified_date2: '-modified-date' as BlogPostSortOrder
 };
 

@@ -54,6 +54,10 @@ export interface SmartLinkSingle {
      * The embedded URL of the Smart Link. If the Smart Link does not have an embedded URL, this property will not be included in the response.
      */
     embedUrl?: string;
+    /**
+     * ID of the space the Smart Link is in.
+     */
+    spaceId?: string;
     version?: Version;
     _links?: SmartLinkLinks;
 }

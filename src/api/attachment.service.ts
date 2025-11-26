@@ -114,18 +114,18 @@ export class AttachmentService {
      * Returns a specific attachment.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the attachment\&#39;s container.
      * @param id The ID of the attachment to be returned. If you don\&#39;t know the attachment\&#39;s ID, use Get attachments for page/blogpost/custom content.
      * @param version Allows you to retrieve a previously published version. Specify the previous version\&#39;s number to retrieve its details.
-     * @param includeLabels Includes labels associated with this attachment in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeProperties Includes content properties associated with this attachment in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeOperations Includes operations associated with this attachment in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeVersions Includes versions associated with this attachment in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeVersion Includes the current version associated with this attachment in the response. By default this is included and can be omitted by setting the value to &#x60;false&#x60;.
-     * @param includeCollaborators Includes collaborators on the attachment.
+     * @param include_labels Includes labels associated with this attachment in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_properties Includes content properties associated with this attachment in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_operations Includes operations associated with this attachment in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_versions Includes versions associated with this attachment in the response. The number of results will be limited to 50 and sorted in the default sort order.  A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_version Includes the current version associated with this attachment in the response. By default this is included and can be omitted by setting the value to &#x60;false&#x60;.
+     * @param include_collaborators Includes collaborators on the attachment.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getAttachmentByIdOpts.config] Override http request option.
      */
-    public getAttachmentById(id: string, version?: number, includeLabels?: boolean, includeProperties?: boolean, includeOperations?: boolean, includeVersions?: boolean, includeVersion?: boolean, includeCollaborators?: boolean, getAttachmentByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GetAttachmentById200Response>>;
-    public getAttachmentById(id: string, version?: number, includeLabels?: boolean, includeProperties?: boolean, includeOperations?: boolean, includeVersions?: boolean, includeVersion?: boolean, includeCollaborators?: boolean, getAttachmentByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getAttachmentById(id: string, version?: number, include_labels?: boolean, include_properties?: boolean, include_operations?: boolean, include_versions?: boolean, include_version?: boolean, include_collaborators?: boolean, getAttachmentByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GetAttachmentById200Response>>;
+    public getAttachmentById(id: string, version?: number, include_labels?: boolean, include_properties?: boolean, include_operations?: boolean, include_versions?: boolean, include_version?: boolean, include_collaborators?: boolean, getAttachmentByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getAttachmentById.');
         }
@@ -134,23 +134,23 @@ export class AttachmentService {
         if (version !== undefined && version !== null) {
             queryParameters.append('version', <any>version);
         }
-        if (includeLabels !== undefined && includeLabels !== null) {
-            queryParameters.append('include-labels', <any>includeLabels);
+        if (include_labels !== undefined && include_labels !== null) {
+            queryParameters.append('include-labels', <any>include_labels);
         }
-        if (includeProperties !== undefined && includeProperties !== null) {
-            queryParameters.append('include-properties', <any>includeProperties);
+        if (include_properties !== undefined && include_properties !== null) {
+            queryParameters.append('include-properties', <any>include_properties);
         }
-        if (includeOperations !== undefined && includeOperations !== null) {
-            queryParameters.append('include-operations', <any>includeOperations);
+        if (include_operations !== undefined && include_operations !== null) {
+            queryParameters.append('include-operations', <any>include_operations);
         }
-        if (includeVersions !== undefined && includeVersions !== null) {
-            queryParameters.append('include-versions', <any>includeVersions);
+        if (include_versions !== undefined && include_versions !== null) {
+            queryParameters.append('include-versions', <any>include_versions);
         }
-        if (includeVersion !== undefined && includeVersion !== null) {
-            queryParameters.append('include-version', <any>includeVersion);
+        if (include_version !== undefined && include_version !== null) {
+            queryParameters.append('include-version', <any>include_version);
         }
-        if (includeCollaborators !== undefined && includeCollaborators !== null) {
-            queryParameters.append('include-collaborators', <any>includeCollaborators);
+        if (include_collaborators !== undefined && include_collaborators !== null) {
+            queryParameters.append('include-collaborators', <any>include_collaborators);
         }
 
         let headers = {...this.defaultHeaders};

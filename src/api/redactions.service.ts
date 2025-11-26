@@ -48,13 +48,13 @@ export class RedactionsService {
      * Redact Content in a Confluence Blog Post
      * Redacts sensitive content in a Confluence blog post by replacing specified text ranges with redaction markers.  Each redaction in the response includes a unique UUID for restoration (except code block redactions).  The response metadata items maintain the same order as the input redaction pointers, and completely  overlapping redactions are merged into a single redaction with one UUID.  **Note**: This endpoint requires **Atlassian Guard Premium**. 
      * @param id The ID of the blog post to redact content from.
-     * @param postRedactPageRequest 
+     * @param PostRedactPageRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [postRedactBlogOpts.config] Override http request option.
      */
-    public postRedactBlog(id: number, postRedactPageRequest?: PostRedactPageRequest, postRedactBlogOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<RedactionResponse>>;
-    public postRedactBlog(id: number, postRedactPageRequest?: PostRedactPageRequest, postRedactBlogOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public postRedactBlog(id: number, PostRedactPageRequest?: PostRedactPageRequest, postRedactBlogOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<RedactionResponse>>;
+    public postRedactBlog(id: number, PostRedactPageRequest?: PostRedactPageRequest, postRedactBlogOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling postRedactBlog.');
         }
@@ -99,7 +99,7 @@ export class RedactionsService {
                 }
 
                 return this.httpClient.post<RedactionResponse>(`${this.basePath}/blogposts/${encodeURIComponent(String(id))}/redact`,
-                    postRedactPageRequest,
+                    PostRedactPageRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...postRedactBlogOpts?.config,
@@ -113,13 +113,13 @@ export class RedactionsService {
      * Redact Content in a Confluence Page
      * Redacts sensitive content in a Confluence page by replacing specified text ranges with redaction markers.  Each redaction in the response includes a unique UUID for restoration (except code block redactions).  The response metadata items maintain the same order as the input redaction pointers, and completely  overlapping redactions are merged into a single redaction with one UUID.  **Note**: This endpoint requires **Atlassian Guard Premium**. 
      * @param id The ID of the page to redact content from.
-     * @param postRedactPageRequest 
+     * @param PostRedactPageRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [postRedactPageOpts.config] Override http request option.
      */
-    public postRedactPage(id: number, postRedactPageRequest?: PostRedactPageRequest, postRedactPageOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<RedactionResponse>>;
-    public postRedactPage(id: number, postRedactPageRequest?: PostRedactPageRequest, postRedactPageOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public postRedactPage(id: number, PostRedactPageRequest?: PostRedactPageRequest, postRedactPageOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<RedactionResponse>>;
+    public postRedactPage(id: number, PostRedactPageRequest?: PostRedactPageRequest, postRedactPageOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling postRedactPage.');
         }
@@ -164,7 +164,7 @@ export class RedactionsService {
                 }
 
                 return this.httpClient.post<RedactionResponse>(`${this.basePath}/pages/${encodeURIComponent(String(id))}/redact`,
-                    postRedactPageRequest,
+                    PostRedactPageRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...postRedactPageOpts?.config,

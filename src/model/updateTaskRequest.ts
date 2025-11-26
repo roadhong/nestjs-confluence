@@ -68,8 +68,8 @@ export interface UpdateTaskRequest {
 export namespace UpdateTaskRequest {
     export type StatusEnum = 'complete' | 'incomplete';
     export const StatusEnum = {
-        Complete: 'complete' as StatusEnum,
-        Incomplete: 'incomplete' as StatusEnum
+        complete: 'complete' as StatusEnum,
+        incomplete: 'incomplete' as StatusEnum
     };
 }
 

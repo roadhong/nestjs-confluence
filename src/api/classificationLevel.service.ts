@@ -466,19 +466,19 @@ export class ClassificationLevelService {
      * Reset blog post classification level
      * Resets the [classification level](https://developer.atlassian.com/cloud/admin/dlp/rest/intro/#Classification%20level) for a specific blog post for the space   [default classification level](https://support.atlassian.com/security-and-access-policies/docs/what-is-a-default-classification-level/).  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: \&#39;Permission to access the Confluence site (\&#39;Can use\&#39; global permission) and permission to view the blog post.
      * @param id The ID of the blog post for which classification level should be updated.
-     * @param postPageClassificationLevelRequest 
+     * @param PostPageClassificationLevelRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [postBlogPostClassificationLevelOpts.config] Override http request option.
      */
-    public postBlogPostClassificationLevel(id: number, postPageClassificationLevelRequest: PostPageClassificationLevelRequest, postBlogPostClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
-    public postBlogPostClassificationLevel(id: number, postPageClassificationLevelRequest: PostPageClassificationLevelRequest, postBlogPostClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public postBlogPostClassificationLevel(id: number, PostPageClassificationLevelRequest: PostPageClassificationLevelRequest, postBlogPostClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public postBlogPostClassificationLevel(id: number, PostPageClassificationLevelRequest: PostPageClassificationLevelRequest, postBlogPostClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling postBlogPostClassificationLevel.');
         }
 
-        if (postPageClassificationLevelRequest === null || postPageClassificationLevelRequest === undefined) {
-            throw new Error('Required parameter postPageClassificationLevelRequest was null or undefined when calling postBlogPostClassificationLevel.');
+        if (PostPageClassificationLevelRequest === null || PostPageClassificationLevelRequest === undefined) {
+            throw new Error('Required parameter PostPageClassificationLevelRequest was null or undefined when calling postBlogPostClassificationLevel.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -520,7 +520,7 @@ export class ClassificationLevelService {
                 }
 
                 return this.httpClient.post<any>(`${this.basePath}/blogposts/${encodeURIComponent(String(id))}/classification-level/reset`,
-                    postPageClassificationLevelRequest,
+                    PostPageClassificationLevelRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...postBlogPostClassificationLevelOpts?.config,
@@ -534,19 +534,19 @@ export class ClassificationLevelService {
      * Reset database classification level
      * Resets the [classification level](https://developer.atlassian.com/cloud/admin/dlp/rest/intro/#Classification%20level) for a specific database for the space  [default classification level](https://support.atlassian.com/security-and-access-policies/docs/what-is-a-default-classification-level/).  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: \&#39;Permission to access the Confluence site (\&#39;Can use\&#39; global permission) and permission to view the database.
      * @param id The ID of the database for which classification level should be updated.
-     * @param postWhiteboardClassificationLevelRequest 
+     * @param PostWhiteboardClassificationLevelRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [postDatabaseClassificationLevelOpts.config] Override http request option.
      */
-    public postDatabaseClassificationLevel(id: number, postWhiteboardClassificationLevelRequest: PostWhiteboardClassificationLevelRequest, postDatabaseClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
-    public postDatabaseClassificationLevel(id: number, postWhiteboardClassificationLevelRequest: PostWhiteboardClassificationLevelRequest, postDatabaseClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public postDatabaseClassificationLevel(id: number, PostWhiteboardClassificationLevelRequest: PostWhiteboardClassificationLevelRequest, postDatabaseClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public postDatabaseClassificationLevel(id: number, PostWhiteboardClassificationLevelRequest: PostWhiteboardClassificationLevelRequest, postDatabaseClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling postDatabaseClassificationLevel.');
         }
 
-        if (postWhiteboardClassificationLevelRequest === null || postWhiteboardClassificationLevelRequest === undefined) {
-            throw new Error('Required parameter postWhiteboardClassificationLevelRequest was null or undefined when calling postDatabaseClassificationLevel.');
+        if (PostWhiteboardClassificationLevelRequest === null || PostWhiteboardClassificationLevelRequest === undefined) {
+            throw new Error('Required parameter PostWhiteboardClassificationLevelRequest was null or undefined when calling postDatabaseClassificationLevel.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -588,7 +588,7 @@ export class ClassificationLevelService {
                 }
 
                 return this.httpClient.post<any>(`${this.basePath}/databases/${encodeURIComponent(String(id))}/classification-level/reset`,
-                    postWhiteboardClassificationLevelRequest,
+                    PostWhiteboardClassificationLevelRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...postDatabaseClassificationLevelOpts?.config,
@@ -602,19 +602,19 @@ export class ClassificationLevelService {
      * Reset page classification level
      * Resets the [classification level](https://developer.atlassian.com/cloud/admin/dlp/rest/intro/#Classification%20level) for a specific page for the space  [default classification level](https://support.atlassian.com/security-and-access-policies/docs/what-is-a-default-classification-level/).  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: \&#39;Permission to access the Confluence site (\&#39;Can use\&#39; global permission) and permission to view the page.
      * @param id The ID of the page for which classification level should be updated.
-     * @param postPageClassificationLevelRequest 
+     * @param PostPageClassificationLevelRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [postPageClassificationLevelOpts.config] Override http request option.
      */
-    public postPageClassificationLevel(id: number, postPageClassificationLevelRequest: PostPageClassificationLevelRequest, postPageClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
-    public postPageClassificationLevel(id: number, postPageClassificationLevelRequest: PostPageClassificationLevelRequest, postPageClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public postPageClassificationLevel(id: number, PostPageClassificationLevelRequest: PostPageClassificationLevelRequest, postPageClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public postPageClassificationLevel(id: number, PostPageClassificationLevelRequest: PostPageClassificationLevelRequest, postPageClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling postPageClassificationLevel.');
         }
 
-        if (postPageClassificationLevelRequest === null || postPageClassificationLevelRequest === undefined) {
-            throw new Error('Required parameter postPageClassificationLevelRequest was null or undefined when calling postPageClassificationLevel.');
+        if (PostPageClassificationLevelRequest === null || PostPageClassificationLevelRequest === undefined) {
+            throw new Error('Required parameter PostPageClassificationLevelRequest was null or undefined when calling postPageClassificationLevel.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -656,7 +656,7 @@ export class ClassificationLevelService {
                 }
 
                 return this.httpClient.post<any>(`${this.basePath}/pages/${encodeURIComponent(String(id))}/classification-level/reset`,
-                    postPageClassificationLevelRequest,
+                    PostPageClassificationLevelRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...postPageClassificationLevelOpts?.config,
@@ -670,19 +670,19 @@ export class ClassificationLevelService {
      * Reset whiteboard classification level
      * Resets the [classification level](https://developer.atlassian.com/cloud/admin/dlp/rest/intro/#Classification%20level) for a specific whiteboard for the space  [default classification level](https://support.atlassian.com/security-and-access-policies/docs/what-is-a-default-classification-level/).  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: \&#39;Permission to access the Confluence site (\&#39;Can use\&#39; global permission) and permission to view the whiteboard.
      * @param id The ID of the whiteboard for which classification level should be updated.
-     * @param postWhiteboardClassificationLevelRequest 
+     * @param PostWhiteboardClassificationLevelRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [postWhiteboardClassificationLevelOpts.config] Override http request option.
      */
-    public postWhiteboardClassificationLevel(id: number, postWhiteboardClassificationLevelRequest: PostWhiteboardClassificationLevelRequest, postWhiteboardClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
-    public postWhiteboardClassificationLevel(id: number, postWhiteboardClassificationLevelRequest: PostWhiteboardClassificationLevelRequest, postWhiteboardClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public postWhiteboardClassificationLevel(id: number, PostWhiteboardClassificationLevelRequest: PostWhiteboardClassificationLevelRequest, postWhiteboardClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public postWhiteboardClassificationLevel(id: number, PostWhiteboardClassificationLevelRequest: PostWhiteboardClassificationLevelRequest, postWhiteboardClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling postWhiteboardClassificationLevel.');
         }
 
-        if (postWhiteboardClassificationLevelRequest === null || postWhiteboardClassificationLevelRequest === undefined) {
-            throw new Error('Required parameter postWhiteboardClassificationLevelRequest was null or undefined when calling postWhiteboardClassificationLevel.');
+        if (PostWhiteboardClassificationLevelRequest === null || PostWhiteboardClassificationLevelRequest === undefined) {
+            throw new Error('Required parameter PostWhiteboardClassificationLevelRequest was null or undefined when calling postWhiteboardClassificationLevel.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -724,7 +724,7 @@ export class ClassificationLevelService {
                 }
 
                 return this.httpClient.post<any>(`${this.basePath}/whiteboards/${encodeURIComponent(String(id))}/classification-level/reset`,
-                    postWhiteboardClassificationLevelRequest,
+                    PostWhiteboardClassificationLevelRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...postWhiteboardClassificationLevelOpts?.config,
@@ -738,19 +738,19 @@ export class ClassificationLevelService {
      * Update blog post classification level
      * Updates the [classification level](https://developer.atlassian.com/cloud/admin/dlp/rest/intro/#Classification%20level) for a specific blog post.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: \&#39;Permission to access the Confluence site (\&#39;Can use\&#39; global permission) and permission to edit the blog post.
      * @param id The ID of the blog post for which classification level should be updated.
-     * @param putPageClassificationLevelRequest 
+     * @param PutPageClassificationLevelRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [putBlogPostClassificationLevelOpts.config] Override http request option.
      */
-    public putBlogPostClassificationLevel(id: number, putPageClassificationLevelRequest: PutPageClassificationLevelRequest, putBlogPostClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
-    public putBlogPostClassificationLevel(id: number, putPageClassificationLevelRequest: PutPageClassificationLevelRequest, putBlogPostClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public putBlogPostClassificationLevel(id: number, PutPageClassificationLevelRequest: PutPageClassificationLevelRequest, putBlogPostClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public putBlogPostClassificationLevel(id: number, PutPageClassificationLevelRequest: PutPageClassificationLevelRequest, putBlogPostClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling putBlogPostClassificationLevel.');
         }
 
-        if (putPageClassificationLevelRequest === null || putPageClassificationLevelRequest === undefined) {
-            throw new Error('Required parameter putPageClassificationLevelRequest was null or undefined when calling putBlogPostClassificationLevel.');
+        if (PutPageClassificationLevelRequest === null || PutPageClassificationLevelRequest === undefined) {
+            throw new Error('Required parameter PutPageClassificationLevelRequest was null or undefined when calling putBlogPostClassificationLevel.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -792,7 +792,7 @@ export class ClassificationLevelService {
                 }
 
                 return this.httpClient.put<any>(`${this.basePath}/blogposts/${encodeURIComponent(String(id))}/classification-level`,
-                    putPageClassificationLevelRequest,
+                    PutPageClassificationLevelRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...putBlogPostClassificationLevelOpts?.config,
@@ -806,19 +806,19 @@ export class ClassificationLevelService {
      * Update database classification level
      * Updates the [classification level](https://developer.atlassian.com/cloud/admin/dlp/rest/intro/#Classification%20level) for a specific database.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: \&#39;Permission to access the Confluence site (\&#39;Can use\&#39; global permission) and permission to edit the database.
      * @param id The ID of the database for which classification level should be updated.
-     * @param putWhiteboardClassificationLevelRequest 
+     * @param PutWhiteboardClassificationLevelRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [putDatabaseClassificationLevelOpts.config] Override http request option.
      */
-    public putDatabaseClassificationLevel(id: number, putWhiteboardClassificationLevelRequest: PutWhiteboardClassificationLevelRequest, putDatabaseClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
-    public putDatabaseClassificationLevel(id: number, putWhiteboardClassificationLevelRequest: PutWhiteboardClassificationLevelRequest, putDatabaseClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public putDatabaseClassificationLevel(id: number, PutWhiteboardClassificationLevelRequest: PutWhiteboardClassificationLevelRequest, putDatabaseClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public putDatabaseClassificationLevel(id: number, PutWhiteboardClassificationLevelRequest: PutWhiteboardClassificationLevelRequest, putDatabaseClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling putDatabaseClassificationLevel.');
         }
 
-        if (putWhiteboardClassificationLevelRequest === null || putWhiteboardClassificationLevelRequest === undefined) {
-            throw new Error('Required parameter putWhiteboardClassificationLevelRequest was null or undefined when calling putDatabaseClassificationLevel.');
+        if (PutWhiteboardClassificationLevelRequest === null || PutWhiteboardClassificationLevelRequest === undefined) {
+            throw new Error('Required parameter PutWhiteboardClassificationLevelRequest was null or undefined when calling putDatabaseClassificationLevel.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -860,7 +860,7 @@ export class ClassificationLevelService {
                 }
 
                 return this.httpClient.put<any>(`${this.basePath}/databases/${encodeURIComponent(String(id))}/classification-level`,
-                    putWhiteboardClassificationLevelRequest,
+                    PutWhiteboardClassificationLevelRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...putDatabaseClassificationLevelOpts?.config,
@@ -874,19 +874,19 @@ export class ClassificationLevelService {
      * Update page classification level
      * Updates the [classification level](https://developer.atlassian.com/cloud/admin/dlp/rest/intro/#Classification%20level) for a specific page.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: \&#39;Permission to access the Confluence site (\&#39;Can use\&#39; global permission) and permission to edit the page.
      * @param id The ID of the page for which classification level should be updated.
-     * @param putPageClassificationLevelRequest 
+     * @param PutPageClassificationLevelRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [putPageClassificationLevelOpts.config] Override http request option.
      */
-    public putPageClassificationLevel(id: number, putPageClassificationLevelRequest: PutPageClassificationLevelRequest, putPageClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
-    public putPageClassificationLevel(id: number, putPageClassificationLevelRequest: PutPageClassificationLevelRequest, putPageClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public putPageClassificationLevel(id: number, PutPageClassificationLevelRequest: PutPageClassificationLevelRequest, putPageClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public putPageClassificationLevel(id: number, PutPageClassificationLevelRequest: PutPageClassificationLevelRequest, putPageClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling putPageClassificationLevel.');
         }
 
-        if (putPageClassificationLevelRequest === null || putPageClassificationLevelRequest === undefined) {
-            throw new Error('Required parameter putPageClassificationLevelRequest was null or undefined when calling putPageClassificationLevel.');
+        if (PutPageClassificationLevelRequest === null || PutPageClassificationLevelRequest === undefined) {
+            throw new Error('Required parameter PutPageClassificationLevelRequest was null or undefined when calling putPageClassificationLevel.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -928,7 +928,7 @@ export class ClassificationLevelService {
                 }
 
                 return this.httpClient.put<any>(`${this.basePath}/pages/${encodeURIComponent(String(id))}/classification-level`,
-                    putPageClassificationLevelRequest,
+                    PutPageClassificationLevelRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...putPageClassificationLevelOpts?.config,
@@ -942,19 +942,19 @@ export class ClassificationLevelService {
      * Update space default classification level
      * Update the [default classification level](https://support.atlassian.com/security-and-access-policies/docs/what-is-a-default-classification-level/)  for a specific space.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: \&#39;Permission to access the Confluence site (\&#39;Can use\&#39; global permission) and \&#39;Admin\&#39; permission for the space.
      * @param id The ID of the space for which default classification level should be updated.
-     * @param putSpaceDefaultClassificationLevelRequest 
+     * @param PutSpaceDefaultClassificationLevelRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [putSpaceDefaultClassificationLevelOpts.config] Override http request option.
      */
-    public putSpaceDefaultClassificationLevel(id: number, putSpaceDefaultClassificationLevelRequest: PutSpaceDefaultClassificationLevelRequest, putSpaceDefaultClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
-    public putSpaceDefaultClassificationLevel(id: number, putSpaceDefaultClassificationLevelRequest: PutSpaceDefaultClassificationLevelRequest, putSpaceDefaultClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public putSpaceDefaultClassificationLevel(id: number, PutSpaceDefaultClassificationLevelRequest: PutSpaceDefaultClassificationLevelRequest, putSpaceDefaultClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public putSpaceDefaultClassificationLevel(id: number, PutSpaceDefaultClassificationLevelRequest: PutSpaceDefaultClassificationLevelRequest, putSpaceDefaultClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling putSpaceDefaultClassificationLevel.');
         }
 
-        if (putSpaceDefaultClassificationLevelRequest === null || putSpaceDefaultClassificationLevelRequest === undefined) {
-            throw new Error('Required parameter putSpaceDefaultClassificationLevelRequest was null or undefined when calling putSpaceDefaultClassificationLevel.');
+        if (PutSpaceDefaultClassificationLevelRequest === null || PutSpaceDefaultClassificationLevelRequest === undefined) {
+            throw new Error('Required parameter PutSpaceDefaultClassificationLevelRequest was null or undefined when calling putSpaceDefaultClassificationLevel.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -996,7 +996,7 @@ export class ClassificationLevelService {
                 }
 
                 return this.httpClient.put<any>(`${this.basePath}/spaces/${encodeURIComponent(String(id))}/classification-level/default`,
-                    putSpaceDefaultClassificationLevelRequest,
+                    PutSpaceDefaultClassificationLevelRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...putSpaceDefaultClassificationLevelOpts?.config,
@@ -1010,19 +1010,19 @@ export class ClassificationLevelService {
      * Update whiteboard classification level
      * Updates the [classification level](https://developer.atlassian.com/cloud/admin/dlp/rest/intro/#Classification%20level) for a specific whiteboard.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: \&#39;Permission to access the Confluence site (\&#39;Can use\&#39; global permission) and permission to edit the whiteboard.
      * @param id The ID of the whiteboard for which classification level should be updated.
-     * @param putWhiteboardClassificationLevelRequest 
+     * @param PutWhiteboardClassificationLevelRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [putWhiteboardClassificationLevelOpts.config] Override http request option.
      */
-    public putWhiteboardClassificationLevel(id: number, putWhiteboardClassificationLevelRequest: PutWhiteboardClassificationLevelRequest, putWhiteboardClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
-    public putWhiteboardClassificationLevel(id: number, putWhiteboardClassificationLevelRequest: PutWhiteboardClassificationLevelRequest, putWhiteboardClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public putWhiteboardClassificationLevel(id: number, PutWhiteboardClassificationLevelRequest: PutWhiteboardClassificationLevelRequest, putWhiteboardClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public putWhiteboardClassificationLevel(id: number, PutWhiteboardClassificationLevelRequest: PutWhiteboardClassificationLevelRequest, putWhiteboardClassificationLevelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling putWhiteboardClassificationLevel.');
         }
 
-        if (putWhiteboardClassificationLevelRequest === null || putWhiteboardClassificationLevelRequest === undefined) {
-            throw new Error('Required parameter putWhiteboardClassificationLevelRequest was null or undefined when calling putWhiteboardClassificationLevel.');
+        if (PutWhiteboardClassificationLevelRequest === null || PutWhiteboardClassificationLevelRequest === undefined) {
+            throw new Error('Required parameter PutWhiteboardClassificationLevelRequest was null or undefined when calling putWhiteboardClassificationLevel.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -1064,7 +1064,7 @@ export class ClassificationLevelService {
                 }
 
                 return this.httpClient.put<any>(`${this.basePath}/whiteboards/${encodeURIComponent(String(id))}/classification-level`,
-                    putWhiteboardClassificationLevelRequest,
+                    PutWhiteboardClassificationLevelRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...putWhiteboardClassificationLevelOpts?.config,

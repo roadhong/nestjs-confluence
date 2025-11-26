@@ -36,6 +36,10 @@ export interface SpaceBulk {
      */
     authorId?: string;
     /**
+     * Currently active alias for a Confluence space.
+     */
+    currentActiveAlias?: string;
+    /**
      * Date and time when the space was created. In format \"YYYY-MM-DDTHH:mm:ss.sssZ\".
      */
     createdAt?: string;

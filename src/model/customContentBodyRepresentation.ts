@@ -17,8 +17,8 @@
 export type CustomContentBodyRepresentation = 'raw' | 'storage' | 'atlas_doc_format';
 
 export const CustomContentBodyRepresentation = {
-    Raw: 'raw' as CustomContentBodyRepresentation,
-    Storage: 'storage' as CustomContentBodyRepresentation,
-    AtlasDocFormat: 'atlas_doc_format' as CustomContentBodyRepresentation
+    raw: 'raw' as CustomContentBodyRepresentation,
+    storage: 'storage' as CustomContentBodyRepresentation,
+    atlas_doc_format: 'atlas_doc_format' as CustomContentBodyRepresentation
 };
 

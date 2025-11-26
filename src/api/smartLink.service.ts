@@ -47,15 +47,15 @@ export class SmartLinkService {
     /**
      * Create Smart Link in the content tree
      * Creates a Smart Link in the content tree in the space.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the corresponding space. Permission to create a Smart Link in the content tree in the space.
-     * @param createSmartLinkRequest 
+     * @param CreateSmartLinkRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [createSmartLinkOpts.config] Override http request option.
      */
-    public createSmartLink(createSmartLinkRequest: CreateSmartLinkRequest, createSmartLinkOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateSmartLink200Response>>;
-    public createSmartLink(createSmartLinkRequest: CreateSmartLinkRequest, createSmartLinkOpts?: { config?: AxiosRequestConfig }): Observable<any> {
-        if (createSmartLinkRequest === null || createSmartLinkRequest === undefined) {
-            throw new Error('Required parameter createSmartLinkRequest was null or undefined when calling createSmartLink.');
+    public createSmartLink(CreateSmartLinkRequest: CreateSmartLinkRequest, createSmartLinkOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateSmartLink200Response>>;
+    public createSmartLink(CreateSmartLinkRequest: CreateSmartLinkRequest, createSmartLinkOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (CreateSmartLinkRequest === null || CreateSmartLinkRequest === undefined) {
+            throw new Error('Required parameter CreateSmartLinkRequest was null or undefined when calling createSmartLink.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -98,7 +98,7 @@ export class SmartLinkService {
                 }
 
                 return this.httpClient.post<CreateSmartLink200Response>(`${this.basePath}/embeds`,
-                    createSmartLinkRequest,
+                    CreateSmartLinkRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...createSmartLinkOpts?.config,
@@ -169,32 +169,32 @@ export class SmartLinkService {
      * Get Smart Link in the content tree by id
      * Returns a specific Smart Link in the content tree.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the Smart Link in the content tree and its corresponding space.
      * @param id The ID of the Smart Link in the content tree to be returned.
-     * @param includeCollaborators Includes collaborators on the Smart Link.
-     * @param includeDirectChildren Includes direct children of the Smart Link, as defined in the &#x60;ChildrenResponse&#x60; object.
-     * @param includeOperations Includes operations associated with this Smart Link in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeProperties Includes content properties associated with this Smart Link in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_collaborators Includes collaborators on the Smart Link.
+     * @param include_direct_children Includes direct children of the Smart Link, as defined in the &#x60;ChildrenResponse&#x60; object.
+     * @param include_operations Includes operations associated with this Smart Link in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_properties Includes content properties associated with this Smart Link in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getSmartLinkByIdOpts.config] Override http request option.
      */
-    public getSmartLinkById(id: number, includeCollaborators?: boolean, includeDirectChildren?: boolean, includeOperations?: boolean, includeProperties?: boolean, getSmartLinkByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateSmartLink200Response>>;
-    public getSmartLinkById(id: number, includeCollaborators?: boolean, includeDirectChildren?: boolean, includeOperations?: boolean, includeProperties?: boolean, getSmartLinkByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getSmartLinkById(id: number, include_collaborators?: boolean, include_direct_children?: boolean, include_operations?: boolean, include_properties?: boolean, getSmartLinkByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateSmartLink200Response>>;
+    public getSmartLinkById(id: number, include_collaborators?: boolean, include_direct_children?: boolean, include_operations?: boolean, include_properties?: boolean, getSmartLinkByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getSmartLinkById.');
         }
 
         let queryParameters = new URLSearchParams();
-        if (includeCollaborators !== undefined && includeCollaborators !== null) {
-            queryParameters.append('include-collaborators', <any>includeCollaborators);
+        if (include_collaborators !== undefined && include_collaborators !== null) {
+            queryParameters.append('include-collaborators', <any>include_collaborators);
         }
-        if (includeDirectChildren !== undefined && includeDirectChildren !== null) {
-            queryParameters.append('include-direct-children', <any>includeDirectChildren);
+        if (include_direct_children !== undefined && include_direct_children !== null) {
+            queryParameters.append('include-direct-children', <any>include_direct_children);
         }
-        if (includeOperations !== undefined && includeOperations !== null) {
-            queryParameters.append('include-operations', <any>includeOperations);
+        if (include_operations !== undefined && include_operations !== null) {
+            queryParameters.append('include-operations', <any>include_operations);
         }
-        if (includeProperties !== undefined && includeProperties !== null) {
-            queryParameters.append('include-properties', <any>includeProperties);
+        if (include_properties !== undefined && include_properties !== null) {
+            queryParameters.append('include-properties', <any>include_properties);
         }
 
         let headers = {...this.defaultHeaders};

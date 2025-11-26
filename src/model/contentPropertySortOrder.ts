@@ -17,7 +17,7 @@
 export type ContentPropertySortOrder = 'key' | '-key';
 
 export const ContentPropertySortOrder = {
-    Key: 'key' as ContentPropertySortOrder,
-    Key2: '-key' as ContentPropertySortOrder
+    key: 'key' as ContentPropertySortOrder,
+    key2: '-key' as ContentPropertySortOrder
 };
 

@@ -14,8 +14,8 @@
 export type ClassificationLevelStatus = 'DRAFT' | 'PUBLISHED' | 'ARCHIVED';
 
 export const ClassificationLevelStatus = {
-    Draft: 'DRAFT' as ClassificationLevelStatus,
-    Published: 'PUBLISHED' as ClassificationLevelStatus,
-    Archived: 'ARCHIVED' as ClassificationLevelStatus
+    DRAFT: 'DRAFT' as ClassificationLevelStatus,
+    PUBLISHED: 'PUBLISHED' as ClassificationLevelStatus,
+    ARCHIVED: 'ARCHIVED' as ClassificationLevelStatus
 };
 

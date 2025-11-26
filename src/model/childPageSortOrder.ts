@@ -17,13 +17,13 @@
 export type ChildPageSortOrder = 'created-date' | '-created-date' | 'id' | '-id' | 'child-position' | '-child-position' | 'modified-date' | '-modified-date';
 
 export const ChildPageSortOrder = {
-    CreatedDate: 'created-date' as ChildPageSortOrder,
-    CreatedDate2: '-created-date' as ChildPageSortOrder,
-    Id: 'id' as ChildPageSortOrder,
-    Id2: '-id' as ChildPageSortOrder,
-    ChildPosition: 'child-position' as ChildPageSortOrder,
-    ChildPosition2: '-child-position' as ChildPageSortOrder,
-    ModifiedDate: 'modified-date' as ChildPageSortOrder,
-    ModifiedDate2: '-modified-date' as ChildPageSortOrder
+    created_date: 'created-date' as ChildPageSortOrder,
+    created_date2: '-created-date' as ChildPageSortOrder,
+    id: 'id' as ChildPageSortOrder,
+    id2: '-id' as ChildPageSortOrder,
+    child_position: 'child-position' as ChildPageSortOrder,
+    child_position2: '-child-position' as ChildPageSortOrder,
+    modified_date: 'modified-date' as ChildPageSortOrder,
+    modified_date2: '-modified-date' as ChildPageSortOrder
 };
 

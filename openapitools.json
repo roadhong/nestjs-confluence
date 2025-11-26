@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.17.0",
+    "generators": {
+      "confluence": {
+        "inputSpec": "v2_openapi.json",
+        "generatorName": "typescript-nestjs",
+        "output": "./src",
+        "additionalProperties": {
+          "modelPackage": "model",
+          "paramNaming": "original",
+          "modelPropertyNaming": "original",
+          "enumPropertyNaming": "original"
+        }
+      }
+    }
+  }
+}

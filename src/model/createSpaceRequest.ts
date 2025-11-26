@@ -28,5 +28,17 @@ export interface CreateSpaceRequest {
     alias?: string;
     description?: CreateSpaceRequestDescription;
     roleAssignments?: Array<CreateSpaceRequestRoleAssignmentsInner>;
+    /**
+     * The id of the space to copy the space access configuration from.
+     */
+    copySpaceAccessConfiguration?: number;
+    /**
+     * Whether to create the space as private.
+     */
+    createPrivateSpace?: boolean;
+    /**
+     * The key of the template to use.
+     */
+    templateKey?: string;
 }
 

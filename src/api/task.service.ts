@@ -50,20 +50,20 @@ export class TaskService {
      * Get task by id
      * Returns a specific task.   **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the containing page or blog post and its corresponding space.
      * @param id The ID of the task to be returned. If you don\&#39;t know the task ID, use Get tasks and filter the results.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getTaskByIdOpts.config] Override http request option.
      */
-    public getTaskById(id: number, bodyFormat?: PrimaryBodyRepresentation, getTaskByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Task>>;
-    public getTaskById(id: number, bodyFormat?: PrimaryBodyRepresentation, getTaskByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getTaskById(id: number, body_format?: PrimaryBodyRepresentation, getTaskByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Task>>;
+    public getTaskById(id: number, body_format?: PrimaryBodyRepresentation, getTaskByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getTaskById.');
         }
 
         let queryParameters = new URLSearchParams();
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
 
         let headers = {...this.defaultHeaders};
@@ -114,92 +114,92 @@ export class TaskService {
     /**
      * Get tasks
      * Returns all tasks. The number of results is limited by the &#x60;limit&#x60; parameter and additional results (if available) will be available through the &#x60;next&#x60; URL present in the &#x60;Link&#x60; response header.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site (\&#39;Can use\&#39; global permission). Only tasks that the user has permission to view will be returned.
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
-     * @param includeBlankTasks Specifies whether to include blank tasks in the response. Defaults to &#x60;true&#x60;.
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
+     * @param include_blank_tasks Specifies whether to include blank tasks in the response. Defaults to &#x60;true&#x60;.
      * @param status Filters on the status of the task.
-     * @param taskId Filters on task ID. Multiple IDs can be specified.
-     * @param spaceId Filters on the space ID of the task. Multiple IDs can be specified.
-     * @param pageId Filters on the page ID of the task. Multiple IDs can be specified. Note - page and blog post filters can be used in conjunction.
-     * @param blogpostId Filters on the blog post ID of the task. Multiple IDs can be specified. Note - page and blog post filters can be used in conjunction.
-     * @param createdBy Filters on the Account ID of the user who created this task. Multiple IDs can be specified.
-     * @param assignedTo Filters on the Account ID of the user to whom this task is assigned. Multiple IDs can be specified.
-     * @param completedBy Filters on the Account ID of the user who completed this task. Multiple IDs can be specified.
-     * @param createdAtFrom Filters on start of date-time range of task based on creation date (inclusive). Input is epoch time in milliseconds.
-     * @param createdAtTo Filters on end of date-time range of task based on creation date (inclusive). Input is epoch time in milliseconds.
-     * @param dueAtFrom Filters on start of date-time range of task based on due date (inclusive). Input is epoch time in milliseconds.
-     * @param dueAtTo Filters on end of date-time range of task based on due date (inclusive). Input is epoch time in milliseconds.
-     * @param completedAtFrom Filters on start of date-time range of task based on completion date (inclusive). Input is epoch time in milliseconds.
-     * @param completedAtTo Filters on end of date-time range of task based on completion date (inclusive). Input is epoch time in milliseconds.
+     * @param task_id Filters on task ID. Multiple IDs can be specified.
+     * @param space_id Filters on the space ID of the task. Multiple IDs can be specified.
+     * @param page_id Filters on the page ID of the task. Multiple IDs can be specified. Note - page and blog post filters can be used in conjunction.
+     * @param blogpost_id Filters on the blog post ID of the task. Multiple IDs can be specified. Note - page and blog post filters can be used in conjunction.
+     * @param created_by Filters on the Account ID of the user who created this task. Multiple IDs can be specified.
+     * @param assigned_to Filters on the Account ID of the user to whom this task is assigned. Multiple IDs can be specified.
+     * @param completed_by Filters on the Account ID of the user who completed this task. Multiple IDs can be specified.
+     * @param created_at_from Filters on start of date-time range of task based on creation date (inclusive). Input is epoch time in milliseconds.
+     * @param created_at_to Filters on end of date-time range of task based on creation date (inclusive). Input is epoch time in milliseconds.
+     * @param due_at_from Filters on start of date-time range of task based on due date (inclusive). Input is epoch time in milliseconds.
+     * @param due_at_to Filters on end of date-time range of task based on due date (inclusive). Input is epoch time in milliseconds.
+     * @param completed_at_from Filters on start of date-time range of task based on completion date (inclusive). Input is epoch time in milliseconds.
+     * @param completed_at_to Filters on end of date-time range of task based on completion date (inclusive). Input is epoch time in milliseconds.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param limit Maximum number of tasks per result to return. If more results exist, use the &#x60;Link&#x60; header to retrieve a relative URL that will return the next set of results.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getTasksOpts.config] Override http request option.
      */
-    public getTasks(bodyFormat?: PrimaryBodyRepresentation, includeBlankTasks?: boolean, status?: 'complete' | 'incomplete', taskId?: Array<number>, spaceId?: Array<number>, pageId?: Array<number>, blogpostId?: Array<number>, createdBy?: Array<string>, assignedTo?: Array<string>, completedBy?: Array<string>, createdAtFrom?: number, createdAtTo?: number, dueAtFrom?: number, dueAtTo?: number, completedAtFrom?: number, completedAtTo?: number, cursor?: string, limit?: number, getTasksOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultTask>>;
-    public getTasks(bodyFormat?: PrimaryBodyRepresentation, includeBlankTasks?: boolean, status?: 'complete' | 'incomplete', taskId?: Array<number>, spaceId?: Array<number>, pageId?: Array<number>, blogpostId?: Array<number>, createdBy?: Array<string>, assignedTo?: Array<string>, completedBy?: Array<string>, createdAtFrom?: number, createdAtTo?: number, dueAtFrom?: number, dueAtTo?: number, completedAtFrom?: number, completedAtTo?: number, cursor?: string, limit?: number, getTasksOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getTasks(body_format?: PrimaryBodyRepresentation, include_blank_tasks?: boolean, status?: 'complete' | 'incomplete', task_id?: Array<number>, space_id?: Array<number>, page_id?: Array<number>, blogpost_id?: Array<number>, created_by?: Array<string>, assigned_to?: Array<string>, completed_by?: Array<string>, created_at_from?: number, created_at_to?: number, due_at_from?: number, due_at_to?: number, completed_at_from?: number, completed_at_to?: number, cursor?: string, limit?: number, getTasksOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultTask>>;
+    public getTasks(body_format?: PrimaryBodyRepresentation, include_blank_tasks?: boolean, status?: 'complete' | 'incomplete', task_id?: Array<number>, space_id?: Array<number>, page_id?: Array<number>, blogpost_id?: Array<number>, created_by?: Array<string>, assigned_to?: Array<string>, completed_by?: Array<string>, created_at_from?: number, created_at_to?: number, due_at_from?: number, due_at_to?: number, completed_at_from?: number, completed_at_to?: number, cursor?: string, limit?: number, getTasksOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
-        if (includeBlankTasks !== undefined && includeBlankTasks !== null) {
-            queryParameters.append('include-blank-tasks', <any>includeBlankTasks);
+        if (include_blank_tasks !== undefined && include_blank_tasks !== null) {
+            queryParameters.append('include-blank-tasks', <any>include_blank_tasks);
         }
         if (status !== undefined && status !== null) {
             queryParameters.append('status', <any>status);
         }
-        if (taskId) {
-            taskId.forEach((element) => {
+        if (task_id) {
+            task_id.forEach((element) => {
                 queryParameters.append('task-id', <any>element);
             })
         }
-        if (spaceId) {
-            spaceId.forEach((element) => {
+        if (space_id) {
+            space_id.forEach((element) => {
                 queryParameters.append('space-id', <any>element);
             })
         }
-        if (pageId) {
-            pageId.forEach((element) => {
+        if (page_id) {
+            page_id.forEach((element) => {
                 queryParameters.append('page-id', <any>element);
             })
         }
-        if (blogpostId) {
-            blogpostId.forEach((element) => {
+        if (blogpost_id) {
+            blogpost_id.forEach((element) => {
                 queryParameters.append('blogpost-id', <any>element);
             })
         }
-        if (createdBy) {
-            createdBy.forEach((element) => {
+        if (created_by) {
+            created_by.forEach((element) => {
                 queryParameters.append('created-by', <any>element);
             })
         }
-        if (assignedTo) {
-            assignedTo.forEach((element) => {
+        if (assigned_to) {
+            assigned_to.forEach((element) => {
                 queryParameters.append('assigned-to', <any>element);
             })
         }
-        if (completedBy) {
-            completedBy.forEach((element) => {
+        if (completed_by) {
+            completed_by.forEach((element) => {
                 queryParameters.append('completed-by', <any>element);
             })
         }
-        if (createdAtFrom !== undefined && createdAtFrom !== null) {
-            queryParameters.append('created-at-from', <any>createdAtFrom);
+        if (created_at_from !== undefined && created_at_from !== null) {
+            queryParameters.append('created-at-from', <any>created_at_from);
         }
-        if (createdAtTo !== undefined && createdAtTo !== null) {
-            queryParameters.append('created-at-to', <any>createdAtTo);
+        if (created_at_to !== undefined && created_at_to !== null) {
+            queryParameters.append('created-at-to', <any>created_at_to);
         }
-        if (dueAtFrom !== undefined && dueAtFrom !== null) {
-            queryParameters.append('due-at-from', <any>dueAtFrom);
+        if (due_at_from !== undefined && due_at_from !== null) {
+            queryParameters.append('due-at-from', <any>due_at_from);
         }
-        if (dueAtTo !== undefined && dueAtTo !== null) {
-            queryParameters.append('due-at-to', <any>dueAtTo);
+        if (due_at_to !== undefined && due_at_to !== null) {
+            queryParameters.append('due-at-to', <any>due_at_to);
         }
-        if (completedAtFrom !== undefined && completedAtFrom !== null) {
-            queryParameters.append('completed-at-from', <any>completedAtFrom);
+        if (completed_at_from !== undefined && completed_at_from !== null) {
+            queryParameters.append('completed-at-from', <any>completed_at_from);
         }
-        if (completedAtTo !== undefined && completedAtTo !== null) {
-            queryParameters.append('completed-at-to', <any>completedAtTo);
+        if (completed_at_to !== undefined && completed_at_to !== null) {
+            queryParameters.append('completed-at-to', <any>completed_at_to);
         }
         if (cursor !== undefined && cursor !== null) {
             queryParameters.append('cursor', <any>cursor);
@@ -257,25 +257,25 @@ export class TaskService {
      * Update task
      * Update a task by id. This endpoint currently only supports updating task status.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to edit the containing page or blog post and view its corresponding space.
      * @param id The ID of the task to be updated. If you don\&#39;t know the task ID, use Get tasks and filter the results.
-     * @param updateTaskRequest 
-     * @param bodyFormat The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
+     * @param UpdateTaskRequest 
+     * @param body_format The content format types to be returned in the &#x60;body&#x60; field of the response. If available, the representation will be available under a response field of the same name under the &#x60;body&#x60; field.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateTaskOpts.config] Override http request option.
      */
-    public updateTask(id: number, updateTaskRequest: UpdateTaskRequest, bodyFormat?: PrimaryBodyRepresentation, updateTaskOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Task>>;
-    public updateTask(id: number, updateTaskRequest: UpdateTaskRequest, bodyFormat?: PrimaryBodyRepresentation, updateTaskOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public updateTask(id: number, UpdateTaskRequest: UpdateTaskRequest, body_format?: PrimaryBodyRepresentation, updateTaskOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Task>>;
+    public updateTask(id: number, UpdateTaskRequest: UpdateTaskRequest, body_format?: PrimaryBodyRepresentation, updateTaskOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateTask.');
         }
 
-        if (updateTaskRequest === null || updateTaskRequest === undefined) {
-            throw new Error('Required parameter updateTaskRequest was null or undefined when calling updateTask.');
+        if (UpdateTaskRequest === null || UpdateTaskRequest === undefined) {
+            throw new Error('Required parameter UpdateTaskRequest was null or undefined when calling updateTask.');
         }
 
         let queryParameters = new URLSearchParams();
-        if (bodyFormat !== undefined && bodyFormat !== null) {
-            queryParameters.append('body-format', <any>bodyFormat);
+        if (body_format !== undefined && body_format !== null) {
+            queryParameters.append('body-format', <any>body_format);
         }
 
         let headers = {...this.defaultHeaders};
@@ -318,7 +318,7 @@ export class TaskService {
                 }
 
                 return this.httpClient.put<Task>(`${this.basePath}/tasks/${encodeURIComponent(String(id))}`,
-                    updateTaskRequest,
+                    UpdateTaskRequest,
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,

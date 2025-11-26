@@ -17,9 +17,9 @@
 export type InlineCommentResolutionStatus = 'open' | 'reopened' | 'resolved' | 'dangling';
 
 export const InlineCommentResolutionStatus = {
-    Open: 'open' as InlineCommentResolutionStatus,
-    Reopened: 'reopened' as InlineCommentResolutionStatus,
-    Resolved: 'resolved' as InlineCommentResolutionStatus,
-    Dangling: 'dangling' as InlineCommentResolutionStatus
+    open: 'open' as InlineCommentResolutionStatus,
+    reopened: 'reopened' as InlineCommentResolutionStatus,
+    resolved: 'resolved' as InlineCommentResolutionStatus,
+    dangling: 'dangling' as InlineCommentResolutionStatus
 };
 

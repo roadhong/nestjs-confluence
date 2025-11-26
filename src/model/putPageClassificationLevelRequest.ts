@@ -24,8 +24,8 @@ export interface PutPageClassificationLevelRequest {
 export namespace PutPageClassificationLevelRequest {
     export type StatusEnum = 'current' | 'draft';
     export const StatusEnum = {
-        Current: 'current' as StatusEnum,
-        Draft: 'draft' as StatusEnum
+        current: 'current' as StatusEnum,
+        draft: 'draft' as StatusEnum
     };
 }
 

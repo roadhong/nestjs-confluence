@@ -47,15 +47,15 @@ export class FolderService {
     /**
      * Create folder
      * Creates a folder in the space.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the corresponding space. Permission to create a folder in the space.
-     * @param createFolderRequest 
+     * @param CreateFolderRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [createFolderOpts.config] Override http request option.
      */
-    public createFolder(createFolderRequest: CreateFolderRequest, createFolderOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateFolder200Response>>;
-    public createFolder(createFolderRequest: CreateFolderRequest, createFolderOpts?: { config?: AxiosRequestConfig }): Observable<any> {
-        if (createFolderRequest === null || createFolderRequest === undefined) {
-            throw new Error('Required parameter createFolderRequest was null or undefined when calling createFolder.');
+    public createFolder(CreateFolderRequest: CreateFolderRequest, createFolderOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateFolder200Response>>;
+    public createFolder(CreateFolderRequest: CreateFolderRequest, createFolderOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+        if (CreateFolderRequest === null || CreateFolderRequest === undefined) {
+            throw new Error('Required parameter CreateFolderRequest was null or undefined when calling createFolder.');
         }
 
         let headers = {...this.defaultHeaders};
@@ -98,7 +98,7 @@ export class FolderService {
                 }
 
                 return this.httpClient.post<CreateFolder200Response>(`${this.basePath}/folders`,
-                    createFolderRequest,
+                    CreateFolderRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...createFolderOpts?.config,
@@ -169,32 +169,32 @@ export class FolderService {
      * Get folder by id
      * Returns a specific folder.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to view the folder and its corresponding space.
      * @param id The ID of the folder to be returned.
-     * @param includeCollaborators Includes collaborators on the folder.
-     * @param includeDirectChildren Includes direct children of the folder, as defined in the &#x60;ChildrenResponse&#x60; object.
-     * @param includeOperations Includes operations associated with this folder in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
-     * @param includeProperties Includes content properties associated with this folder in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_collaborators Includes collaborators on the folder.
+     * @param include_direct_children Includes direct children of the folder, as defined in the &#x60;ChildrenResponse&#x60; object.
+     * @param include_operations Includes operations associated with this folder in the response, as defined in the &#x60;Operation&#x60; object. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
+     * @param include_properties Includes content properties associated with this folder in the response. The number of results will be limited to 50 and sorted in the default sort order. A &#x60;meta&#x60; and &#x60;_links&#x60; property will be present to indicate if more results are available and a link to retrieve the rest of the results.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getFolderByIdOpts.config] Override http request option.
      */
-    public getFolderById(id: number, includeCollaborators?: boolean, includeDirectChildren?: boolean, includeOperations?: boolean, includeProperties?: boolean, getFolderByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateFolder200Response>>;
-    public getFolderById(id: number, includeCollaborators?: boolean, includeDirectChildren?: boolean, includeOperations?: boolean, includeProperties?: boolean, getFolderByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getFolderById(id: number, include_collaborators?: boolean, include_direct_children?: boolean, include_operations?: boolean, include_properties?: boolean, getFolderByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateFolder200Response>>;
+    public getFolderById(id: number, include_collaborators?: boolean, include_direct_children?: boolean, include_operations?: boolean, include_properties?: boolean, getFolderByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getFolderById.');
         }
 
         let queryParameters = new URLSearchParams();
-        if (includeCollaborators !== undefined && includeCollaborators !== null) {
-            queryParameters.append('include-collaborators', <any>includeCollaborators);
+        if (include_collaborators !== undefined && include_collaborators !== null) {
+            queryParameters.append('include-collaborators', <any>include_collaborators);
         }
-        if (includeDirectChildren !== undefined && includeDirectChildren !== null) {
-            queryParameters.append('include-direct-children', <any>includeDirectChildren);
+        if (include_direct_children !== undefined && include_direct_children !== null) {
+            queryParameters.append('include-direct-children', <any>include_direct_children);
         }
-        if (includeOperations !== undefined && includeOperations !== null) {
-            queryParameters.append('include-operations', <any>includeOperations);
+        if (include_operations !== undefined && include_operations !== null) {
+            queryParameters.append('include-operations', <any>include_operations);
         }
-        if (includeProperties !== undefined && includeProperties !== null) {
-            queryParameters.append('include-properties', <any>includeProperties);
+        if (include_properties !== undefined && include_properties !== null) {
+            queryParameters.append('include-properties', <any>include_properties);
         }
 
         let headers = {...this.defaultHeaders};

@@ -17,8 +17,8 @@
 export type PrincipalType = 'USER' | 'GROUP' | 'ACCESS_CLASS';
 
 export const PrincipalType = {
-    User: 'USER' as PrincipalType,
-    Group: 'GROUP' as PrincipalType,
-    AccessClass: 'ACCESS_CLASS' as PrincipalType
+    USER: 'USER' as PrincipalType,
+    GROUP: 'GROUP' as PrincipalType,
+    ACCESS_CLASS: 'ACCESS_CLASS' as PrincipalType
 };
 

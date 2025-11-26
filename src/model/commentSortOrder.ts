@@ -17,9 +17,9 @@
 export type CommentSortOrder = 'created-date' | '-created-date' | 'modified-date' | '-modified-date';
 
 export const CommentSortOrder = {
-    CreatedDate: 'created-date' as CommentSortOrder,
-    CreatedDate2: '-created-date' as CommentSortOrder,
-    ModifiedDate: 'modified-date' as CommentSortOrder,
-    ModifiedDate2: '-modified-date' as CommentSortOrder
+    created_date: 'created-date' as CommentSortOrder,
+    created_date2: '-created-date' as CommentSortOrder,
+    modified_date: 'modified-date' as CommentSortOrder,
+    modified_date2: '-modified-date' as CommentSortOrder
 };
 

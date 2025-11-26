@@ -24,9 +24,9 @@ export interface CustomContentBodyWrite {
 export namespace CustomContentBodyWrite {
     export type RepresentationEnum = 'storage' | 'atlas_doc_format' | 'raw';
     export const RepresentationEnum = {
-        Storage: 'storage' as RepresentationEnum,
-        AtlasDocFormat: 'atlas_doc_format' as RepresentationEnum,
-        Raw: 'raw' as RepresentationEnum
+        storage: 'storage' as RepresentationEnum,
+        atlas_doc_format: 'atlas_doc_format' as RepresentationEnum,
+        raw: 'raw' as RepresentationEnum
     };
 }
 

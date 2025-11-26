@@ -20,7 +20,7 @@ export interface PostWhiteboardClassificationLevelRequest {
 export namespace PostWhiteboardClassificationLevelRequest {
     export type StatusEnum = 'current';
     export const StatusEnum = {
-        Current: 'current' as StatusEnum
+        current: 'current' as StatusEnum
     };
 }
 

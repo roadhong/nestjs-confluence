@@ -50,6 +50,10 @@ export interface CreateWhiteboard200Response {
      * Date and time when the whiteboard was created. In format \"YYYY-MM-DDTHH:mm:ss.sssZ\".
      */
     createdAt?: string;
+    /**
+     * ID of the space the whiteboard is in.
+     */
+    spaceId?: string;
     version?: Version;
     _links?: GetAttachmentById200ResponseAllOfLinks;
 }

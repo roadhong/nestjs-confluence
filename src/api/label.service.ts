@@ -284,7 +284,7 @@ export class LabelService {
     /**
      * Get labels
      * Returns all labels. The number of results is limited by the &#x60;limit&#x60; parameter and additional results (if available) will be available through the &#x60;next&#x60; URL present in the &#x60;Link&#x60; response header.  **[Permissions](https://confluence.atlassian.com/x/_AozKw) required**: Permission to access the Confluence site (\&#39;Can use\&#39; global permission). Only labels that the user has permission to view will be returned.
-     * @param labelId Filters on label ID. Multiple IDs can be specified as a comma-separated list.
+     * @param label_id Filters on label ID. Multiple IDs can be specified as a comma-separated list.
      * @param prefix Filters on label prefix. Multiple IDs can be specified as a comma-separated list.
      * @param cursor Used for pagination, this opaque cursor will be returned in the &#x60;next&#x60; URL in the &#x60;Link&#x60; response header. Use the relative URL in the &#x60;Link&#x60; header to retrieve the &#x60;next&#x60; set of results.
      * @param sort Used to sort the result by a particular field.
@@ -293,11 +293,11 @@ export class LabelService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getLabelsOpts.config] Override http request option.
      */
-    public getLabels(labelId?: Array<number>, prefix?: Array<string>, cursor?: string, sort?: Array<LabelSortOrder>, limit?: number, getLabelsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultLabel>>;
-    public getLabels(labelId?: Array<number>, prefix?: Array<string>, cursor?: string, sort?: Array<LabelSortOrder>, limit?: number, getLabelsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public getLabels(label_id?: Array<number>, prefix?: Array<string>, cursor?: string, sort?: Array<LabelSortOrder>, limit?: number, getLabelsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MultiEntityResultLabel>>;
+    public getLabels(label_id?: Array<number>, prefix?: Array<string>, cursor?: string, sort?: Array<LabelSortOrder>, limit?: number, getLabelsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
-        if (labelId) {
-            labelId.forEach((element) => {
+        if (label_id) {
+            label_id.forEach((element) => {
                 queryParameters.append('label-id', <any>element);
             })
         }
