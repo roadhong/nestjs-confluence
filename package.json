@@ -4,7 +4,7 @@
   "description": "Nestjs Confluence api v2 module",
   "scripts": {
     "build": "tsc",
-    "prepare": "rimraf build && pnpm run build",
+    "prepare": "rimraf dist && pnpm run build",
     "generate": "openapi-generator-cli generate --generator-key confluence"
   },
   "devDependencies": {
